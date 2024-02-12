@@ -1,1 +1,142 @@
-# monswiklund.github.io
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storegården 7</title>
+    <link rel="stylesheet" href="css/startsida.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dawning+of+a+New+Day&family=Josefin+Sans:ital,wght@1,200&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/aos-next/src/js/aos.js" />
+    <script src="css/aos-next/src/js/aos.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <div class="topptext">
+            <div class="bildlogo">
+                <img src="pictures/logo.png" alt="Storegården 7">
+            </div>
+        </div>
+        <div class="sidebar active" id="sidebar">
+            <!-- Lägg till klassen "active" för att ha sidomenyn öppen som standard -->
+            <h3 id="startsida">Startsida</h3>
+            <h3 id="lokal">Lokal</h3>
+            <h3 id="keramik">Keramik</h3>
+            <h3 id="måleri">Måleri</h3>
+            <h3 id="event&Fest">Event&nbsp;&&nbsp;Fest</h3>
+            <h3 id="bokning">Bokning</h3>
+            <h3 id="vilkaViÄr">Vilka vi är</h3>
+        </div>
+    </div>
+        <div class="main-content" data-aos="fade-up">
+            <div class="text">
+                <h2>Välkommen till vår charmiga ladugård med en inredd lokal som är perfekt för alla dina speciella
+                    tillfällen! Oavsett om det är ett bröllop, en fest, en keramikkurs eller en målarkurs, är vår plats
+                    den
+                    idealiska platsen för att skapa minnen som varar livet ut.</h2>
+                <h3>Våra tjänster:</h3>
+                <h4>Evenemang:</h4>
+                <p>Söker du den perfekta platsen för ditt bröllop eller företagsevenemang? Vår ladugård erbjuder en
+                    rustik och romantisk atmosfär som kommer att förtrolla dina gäster.</p>
+                <h4>Keramik- och Målarkurser:</h4>
+                <p>För de kreativa själarna där ute är vår ladugård det ultimata utrymmet att utforska konsten att
+                    skapa.
+                    Våra kurser leds av erfarna konstnärer och erbjuder en avslappnad och inspirerande miljö för att
+                    låta
+                    din kreativitet flöda.</p>
+                <h4>Utställningar:</h4>
+                <p>Vi är stolta över att vara en plattform för lokala konstnärer och hantverkare att visa upp sina verk.
+                    Kom och utforska våra utställningar och låt dig inspireras av den lokala konstnärliga talangen.
+                </p>
+                <h4>Varför välja oss?:</h4>
+                <p>Unik plats: Vår ladugård är fylld med karaktär och charm, vilket ger dina evenemang en unik touch.
+                    <br></br>
+                    Flexibilitet: Vi är här för att hjälpa dig att skapa det perfekta evenemanget enligt dina önskemål
+                    och
+                    behov.
+                    <br></br>
+                    Professionell service: Vårt team av erfarna evenemangsplanerare och konstnärer finns här för att se
+                    till
+                    att din upplevelse är oförglömlig.
+                    <br></br>
+                    Kontakta oss idag för att boka din nästa speciella händelse eller kurs i vår fantastiska ladugård!
+                </p>
+            </div>
+        <div class="line">
+
+        </div>
+            <div class="bilder">
+                <img src="pictures/slide1.jpg" alt="Slide 1">
+                <img src="pictures/slide2.jpg" alt="Slide 2">
+                <img src="pictures/slide3.jpg" alt="Slide 3">
+                <img src="pictures/slide4.jpg" alt="Slide 4">
+                <img src="pictures/slide5.jpg" alt="Slide 5">
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <form action="action_page.php">
+            <div class="row">
+                <div class="col-25">
+                    <label for="fname">Namn</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="fname" name="firstname" placeholder="...">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="lname">Ämne</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="country">Evenemang</label>
+                </div>
+                <div class="col-75">
+                    <select id="country" name="country">
+                        <option value="företagsFormulär">Företag</option>
+                        <option value="kalasFestFormulär">Kalas/Fest</option>
+                        <option value="bröllopFormulär">Bröllop</option>
+                        <option value="keramikFormulär">Keramik/Målarkurs</option>
+                        <option value="konsultingFormulär">Konsulting</option>
+                        <option value="annatFormulär">Annat...</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="subject">Subject</label>
+                </div>
+                <div class="col-75">
+                    <textarea id="subject" name="subject" placeholder="Hej, vi önskar..."
+                        style="height:200px"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+
+    <script src="script/script.js">
+    </script> <!-- Skript för att hantera öppning/stängning av sidomenyn -->
+    <script src="AOS.init();">
+    </script>
+
+    <footer>
+        <p>Måns Viklund</p>
+    </footer>
+</body>
+
+</html>
