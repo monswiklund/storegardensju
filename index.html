@@ -27,20 +27,45 @@
         <div class="sidebar active" id="sidebar">
             <!-- Lägg till klassen "active" för att ha sidomenyn öppen som standard -->
             <h3 id="startsida">Startsida</h3>
-            <h3 id="lokal">Lokal</h3>
-            <h3 id="keramik">Keramik</h3>
-            <h3 id="måleri">Måleri</h3>
+            <h3 id="skapande">Skapande</h3>
+            <h3 id="kommandeEvenemang">Kommande Evenemang</h3>
             <h3 id="event&Fest">Event&nbsp;&&nbsp;Fest</h3>
             <h3 id="bokning">Bokning</h3>
+            <h3 id="galleri">Galleri</h3>
             <h3 id="vilkaViÄr">Vilka vi är</h3>
+            <h3 id="Sammarbeta">Sammarbeta med oss</h3>
+
         </div>
-    </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn"><div></div>
+                <div></div>
+                <div></div>
+            </button>
+            <div class="dropdown-content">
+            <a href="#">Startsida</a>
+            <a href="#">Skapande</a>
+            <a href="#">Event&nbsp;&&nbsp;Fest</a>
+            <a href="#">Bokning</a>
+            <a href="#">Galleri</a>
+            <a href="#">Vilka vi är</a>
+            <a href="#">Sammarbeta med oss</a>
+
+
+            </div>
+          </div>
+
+        <h1 class="UnderTitle">En plats för kreativit nöje!</h1>
         <div class="main-content" data-aos="fade-up">
             <div class="text">
-                <h2>Välkommen till vår charmiga ladugård med en inredd lokal som är perfekt för alla dina speciella
-                    tillfällen! Oavsett om det är ett bröllop, en fest, en keramikkurs eller en målarkurs, är vår plats
-                    den
-                    idealiska platsen för att skapa minnen som varar livet ut.</h2>
+                <h2>Välkommen till Storegården&nbsp;7!</h2>
+                <h2>
+                    En ständigt växande plats där tanken är att det ska finnas något för alla.<br>Konstnärliga kurser i
+                    att
+                    måla och att skapa med keramik.<br> Eller hyr vår fina lokal till att annordna kalas eller
+                    fest.<br>Loppis har vi även imellanåt och det finns en gårdsbutik med konst, keramik och en atelje
+                    för inspiration.</h2>
                 <h3>Våra tjänster:</h3>
                 <h4>Evenemang:</h4>
                 <p>Söker du den perfekta platsen för ditt bröllop eller företagsevenemang? Vår ladugård erbjuder en
@@ -69,9 +94,9 @@
                     Kontakta oss idag för att boka din nästa speciella händelse eller kurs i vår fantastiska ladugård!
                 </p>
             </div>
-        <div class="line">
+            <div class="line">
 
-        </div>
+            </div>
             <div class="bilder">
                 <img src="pictures/slide1.jpg" alt="Slide 1">
                 <img src="pictures/slide2.jpg" alt="Slide 2">
@@ -82,7 +107,8 @@
         </div>
     </header>
     <div class="container">
-        <form action="action_page.php">
+        <form action="submit_form.php" method="post">
+
             <div class="row">
                 <div class="col-25">
                     <label for="fname">Namn</label>
