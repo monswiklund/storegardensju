@@ -7,30 +7,8 @@ html, body {
     overflow-x: hidden;
     font-size: 1em;
     background-color: #f1f1f1;
-
+    
 }
-
-/* Logo container */
-.logo-container {
-    display: flex;
-    flex-direction: column; /* Ställ in flexriktningen till kolumn för att placera elementen vertikalt */
-    align-items: center; /* Centrera innehållet horisontellt */
-    justify-content: flex-start; /* Justera innehållet längs starten av huvudaxeln (övre delen av sidan) */
-    background-color: #f1f1f1; /* Bakgrundsfärg för header-elementet */
-}
-.logo-container img {
-    max-width: 1300px; /* Säkerställ att bilden inte blir bredare än dess förälderselement */
-    height: auto; /* Bibehåll bildens proportioner */
-    display: flex; /* Gör bilden till ett blockelement för att kunna använda margin: 0 auto; för att centrera */
-    animation: fadeIn 3s; /* Lägg till en inzoomningsanimation */
-    width: 100%; /* Ändra bredden på huvudinnehållet till 100% för mindre skärmar */
-}
-
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-
 /* Navigation */
 .navbar {
     position: fixed; /* Gör sidomenyn fixerad så den alltid är synlig på skärmen */
@@ -142,10 +120,31 @@ a:active {
 .dropdown:hover .dropbtn {
     background-color: #333;
 }
-/*================================================*/
-/*==============FORTSÄTT UNDER HÄR================*/
-/*================================================*/
+/*=========================================*/
+/*============= INDEX NEDANFÖR ===========*/
+/*=========================================*/
 
+/* Logo container */
+.logo-container {
+    display: flex;
+    flex-direction: column; /* Ställ in flexriktningen till kolumn för att placera elementen vertikalt */
+    align-items: center; /* Centrera innehållet horisontellt */
+    justify-content: flex-start; /* Justera innehållet längs starten av huvudaxeln (övre delen av sidan) */
+    background-color: #f1f1f1; /* Bakgrundsfärg för header-elementet */
+}
+.logo-container img {
+    max-width: 1300px; /* Säkerställ att bilden inte blir bredare än dess förälderselement */
+    height: auto; /* Bibehåll bildens proportioner */
+    display: flex; /* Gör bilden till ett blockelement för att kunna använda margin: 0 auto; för att centrera */
+    animation: fadeIn 3s; /* Lägg till en inzoomningsanimation */
+    width: 100%; /* Ändra bredden på huvudinnehållet till 100% för mindre skärmar */
+}
+
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
 
 .UnderTitle {
     font-size: 3em;
@@ -188,17 +187,42 @@ a:active {
 
 .bilder {
 
+}
+
+    /*=========================================*/
+    /*============= OM OSS NEDANFÖR ===========*/
+    /*=========================================*/
+
+
+/* Om oss sektion */
+/* Vilka vi är presentation */
+.about-us-section  {
+    max-width: 600px;
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+    padding: 0 20px;
+}
+
+.about-us-section h2 {
+    padding-top: 80px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.about-us-section h1 {
+
+    line-height: 1.6;
 
 }
-/* Om oss sektion */
-.about-us-section {
-    padding: 50px; /* Lägg till utrymme runt innehållet */
-    text-align: center; /* Centrera texten */
+
+.textCarl, .textAnn li {
+    text-align: left;
+    list-style-position: inside;
 }
 
 /* Teammedlemmar */
 .team-member {
-    margin-bottom: 30px; /* Justera avstånd mellan teammedlemmar */
 }
 
 /* Ann */
@@ -222,36 +246,48 @@ a:active {
 }
 
 /* Övriga element */
-#NamnBildAnn, #NamnBildCarl, #NamnBildLina, #NamnBildMåns {
+#NamnBildAnn, #NamnBildCarl, #NamnBildLina, #NamnBildMans #NamnBildMonday {
     font-size: 24px; /* Justera textstorlek för namn */
     margin-bottom: 10px; /* Justera avstånd mellan namn och andra element */
 }
 
-#pfpAnn, #pfpCarl, #pfpLina, #pfpMans {
+#pfpAnn, #pfpCarl, #pfpLina, #pfpMans, #pfpMonday {
     border-radius: 50%; /* Runda av profilbilderna */
     width: 150px; /* Justera storlek på profilbilderna */
     height: 150px;
     object-fit: cover; /* Säkerställ att bilden fyller ut cirkeln */
     margin-bottom: 10px; /* Justera avstånd mellan profilbilder */
 }
+#pfpMonday  {
+    object-position: 50% 30% ;
+}
+#textAnn, #textCarl {
+    line-height: 1.2;
 
-.textAnn, .textCarl {
-    font-size: 18px; /* Justera textstorlek för individuell text */
 }
 
+/* Carl hemsida */
 .lankknapp {
-    background-color: #007bff; /* Bakgrundsfärg för knappen */
-    color: #fff; /* Textfärg för knappen */
-    padding: 10px 20px; /* Utrymme inom knappen */
-    border: none; /* Ingen kantlinje */
-    border-radius: 5px; /* Runda av kanterna på knappen */
-    text-decoration: none; /* Ingen understreckad text */
-    font-weight: bold; /* Fet text */
-    transition: background-color 0.3s; /* Glattningsövergång för bakgrundsfärgen */
+    padding: 0.8em 1.8em;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    color: #000;
+    background-color: hsl(0, 0%, 32%);
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
 }
 
 .lankknapp:hover {
-    background-color: #0056b3; /* Ändra bakgrundsfärg vid hovring */
+    background-color: #919191;
+    box-shadow: 0px 10px 30px rgba(65, 65, 65, 0.6);
+    color: #fff;
+    transform: translateY(-7px);
 }
 
 .contact-form {
@@ -261,11 +297,17 @@ a:active {
 /* Övriga id-n */
 
 @media (max-width:600px) {
+    /*=========================================*/
+    /*============= ALLMÄNT NEDANFÖR ==========*/
+    /*=========================================*/
 
     .navbar {
         display: none;
     }
     
+    /*=========================================*/
+    /*============= INDEX NEDANFÖR ===========*/
+    /*=========================================*/
     .UnderTitle {
         font-size: 2em;
     }
@@ -284,6 +326,24 @@ a:active {
         margin-right: 15%;
         margin-left: 15%;
     }
+    
+    .bilder{
+        display: block;
+        margin-right: auto;
+        margin-left: 10%;
+    }
+    
+    
+    .bilder img {
+        width: 80%;
+        padding: 5px;
+        max-width: 200px;
+        border-radius: 12px;
+    }
+    /*=========================================*/
+    /*============= OM OSS NEDANFÖR ===========*/
+    /*=========================================*/
+
     .about-us-section {
         padding-top: 40%;
         padding-left: 20%;
@@ -291,26 +351,23 @@ a:active {
         line-height: 1.6;
     }
 
-    .bilder{
-        display: block;
-        margin-right: auto;
+    .team-member {
         margin-left: 10%;
+        margin-right: 10%;
     }
-
-
-    .bilder img {
-        width: 80%;
-        padding: 5px;
-        max-width: 200px;
-        border-radius: 12px;
-     }
-
 }
 
 @media (min-width:601px) {
+    /*=========================================*/
+    /*============= ALLMÄNT NEDANFÖR ==========*/
+    /*=========================================*/
     .navbar {
         display: none;
     }
+
+    /*=========================================*/
+    /*============= INDEX NEDANFÖR ===========*/
+    /*=========================================*/
 
     .tjanster {
         min-width: 40%;
@@ -338,15 +395,22 @@ a:active {
     .tjanster {
         margin-left: 5%;
     }
-    .about-us-section {
-        padding-top: 10%;
-        padding-left: 20%;
-        padding-right: 20%;
-        line-height: 1.6;
+
+    /*=========================================*/
+    /*============= OM OSS NEDANFÖR ===========*/
+    /*=========================================*/
+
+    .team-member {
+        margin-left: 10%;
+        margin-right: 10%;
     }
+
 }
 
 @media (min-width:768px) {
+    /*=========================================*/
+    /*============= ALLMÄNT NEDANFÖR ==========*/
+    /*=========================================*/
     .navbar {
         display: flex;
         font-size: 0.85rem;
@@ -355,13 +419,14 @@ a:active {
         display: none;
     }
 
+    /*=========================================*/
+    /*============= INDEX NEDANFÖR ===========*/
+    /*=========================================*/
+
     .main-content {
         all: unset;
     }
-    .welcome-text {
-
-
-    }
+    
     .tjanster {
         all: unset;
         min-width: 40%;
@@ -384,12 +449,25 @@ a:active {
         margin: 0 auto !important; 
     }
     
+    /*=========================================*/
+    /*============= OM OSS NEDANFÖR ===========*/
+    /*=========================================*/
+
 }
 
 @media (min-width:992px) {
+
+    /*=========================================*/
+    /*============= ALLMÄNT NEDANFÖR ==========*/
+    /*=========================================*/
+
     .navbar {
         font-size: 1.2em;
     }
+
+    /*=========================================*/
+    /*============= INDEX NEDANFÖR ===========*/
+    /*=========================================*/
 
     .tjanster {
         font-size: 1.2em;
@@ -410,12 +488,27 @@ a:active {
         max-width: 640px;
         margin: 0 auto !important; 
     }
-}
+
+    /*=========================================*/
+    /*============= OM OSS NEDANFÖR ===========*/
+    /*=========================================*/
+
+    .about-us-section {
+        font-size: 1.3em;
+        max-width: 800px;
+    }
+
+    .lankknappDIV {
+        margin-top: 40px;
+        margin-bottom: 40px;
+        
+    }
+}  
 
 @media (min-width:1200px) {
-    .about-us-section {
-        max-width: 900px;
-    }
+    /*=========================================*/
+    /*============= ALLMÄNT NEDANFÖR ==========*/
+    /*=========================================*/
 
     .tjanster {
         all: unset;
@@ -424,10 +517,15 @@ a:active {
         max-width: 600px;
         font-size: 1.5em;
     }
+
+    /*=========================================*/
+    /*============= INDEX NEDANFÖR ===========*/
+    /*=========================================*/
+
     .TextOchBilder {
-
+        
     }
-
+    
     .bilder {
         all: unset;
         display: flex;
@@ -435,14 +533,48 @@ a:active {
         flex-wrap: wrap;
         margin-left: 100px;
     }
-
+    
     .bilder img {
         all: unset;
         margin-top: 10px;
         margin-left: 12px;
-
+        
         max-width: 270px;
         border-radius: 8px;
         overflow: hidden; /* Lägg till overflow: hidden för att säkerställa att hörnen avrundas */
     }
+    
+    /*=========================================*/
+    /*============= OM OSS NEDANFÖR ===========*/
+    /*=========================================*/
+
+    .about-us-section {
+        font-size: 1.3em;
+        max-width: 800px;
+    }
+    .team-member {
+        margin: 20px auto;
+        width:400px;
+        height:400px;
+        display:grid;
+        grid-template-columns: 500px 500px;
+        grid-row: auto auto;
+        column-gap: 190px;
+        justify-content: center;
+    }
+    .Ann, .Carl, .Lina, .Mans, .Monday {
+    }
+
+    .lankknapp {
+    }
+    .Ann, .Lina {
+    }
+
+    .Carl, .Måns{
+    }
+
+    .individuellText {
+    }
+
+
 }
