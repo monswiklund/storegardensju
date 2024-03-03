@@ -1,0 +1,445 @@
+/* Grundläggande stilar */
+html, body {
+    font-family: 'Josefin Sans', sans-serif; /* Använd den importerade Google-fonten */
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-size: 1em;
+    background-color: #f1f1f1;
+
+}
+
+/* Logo container */
+.logo-container {
+    display: flex;
+    flex-direction: column; /* Ställ in flexriktningen till kolumn för att placera elementen vertikalt */
+    align-items: center; /* Centrera innehållet horisontellt */
+    justify-content: flex-start; /* Justera innehållet längs starten av huvudaxeln (övre delen av sidan) */
+    background-color: #f1f1f1; /* Bakgrundsfärg för header-elementet */
+}
+.logo-container img {
+    max-width: 1300px; /* Säkerställ att bilden inte blir bredare än dess förälderselement */
+    height: auto; /* Bibehåll bildens proportioner */
+    display: flex; /* Gör bilden till ett blockelement för att kunna använda margin: 0 auto; för att centrera */
+    animation: fadeIn 3s; /* Lägg till en inzoomningsanimation */
+    width: 100%; /* Ändra bredden på huvudinnehållet till 100% för mindre skärmar */
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Navigation */
+.navbar {
+    position: fixed; /* Gör sidomenyn fixerad så den alltid är synlig på skärmen */
+    display: flex; /* Använd flexbox för att skapa en horisontell layout */
+    justify-content: center; /* Centrera länkarna horisontellt */
+    top: 0; /* Placera sidomenyn längst upp på skärmen */
+    width: 100%; /* Ange full bredd för sidomenyn */
+    height: 60px; /* Gör sidomenyn lika hög som fönstret */
+    background-color: #333; /* Ange bakgrundsfärg för sidomenyn */
+    align-items: center; /* Centrera innehållet vertikalt */
+    text-align: center; /* Centrera texten horisontellt */
+    text-decoration: none;
+}
+/* ====== Länkar ====== */
+
+/* Stilar för länkar i sidomenyn */
+.navbar li {
+    color: #fff; /* Vit färg för länkarna */
+    margin: 0 10px; /* Lägg till lite mellanrum mellan varje länk */
+    padding: 10px; /* Lägg till padding för att öka klickbarheten */
+    text-align: center; /* Centrera texten horisontellt */
+    cursor: pointer; /* Visar pekaren när användaren hovrar över länkarna */
+    list-style: none;
+}
+
+/* Stilar för länkar i sidomenyn när de är markerade */
+.navbar li:hover {
+    background-color: #555; /* Ändra bakgrundsfärgen när användaren hovrar över länkarna */
+}
+
+/* Stilar för länkar */
+a {
+    color: white; /* Ange färgen för vanliga länkar */
+    text-decoration: none; /* Ta bort understreck på länkar */
+}
+
+/* Stilar för besökta länkar */
+a:visited {
+    color: white; /* Ange färgen för besökta länkar */
+    text-decoration: none; /* Ta bort understreck på besökta länkar */
+}
+
+/* Stilar för länkar när musen är över dem */
+a:hover {
+    color: grey; /* Ange färgen för länkar när musen är över dem */
+}
+
+/* Stilar för aktiva länkar */
+a:active {
+    color: seashell; /* Ange färgen för aktiva länkar */
+}
+
+/* Drop Down Button */
+.dropbtn {
+    border-radius: 100px;
+    background-color: #515151;
+    color: white;
+    padding: 10px;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.dropbtn div {
+    width: 35px;
+    height: 4px;
+    background-color: white;
+    margin: 6px 0;
+
+}
+
+/* Dropdown container */
+.dropdown {
+    position: fixed; /* Ändra positionen till fixed för att hålla den längst upp på sidan */
+    top: 10px; /* Placera dropdown längst upp på sidan */
+    left: 10px; /* Justera vid behov */
+    display: inline-block;
+}
+
+/* Dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px; /* Anpassa bredden efter behov */
+    box-shadow: 0px 8px 16px 0px rgba(118, 118, 118, 0.2);
+    z-index: 1;
+    font-size: 1em; /* Anpassa textstorlek efter behov */
+}
+
+/* Dropdown links */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Hover state for dropdown links */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show dropdown content when hovering over dropdown container */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change background color of dropdown button on hover */
+.dropdown:hover .dropbtn {
+    background-color: #333;
+}
+/*================================================*/
+/*==============FORTSÄTT UNDER HÄR================*/
+/*================================================*/
+
+
+.UnderTitle {
+    font-size: 3em;
+    text-align: center;
+}
+.welcome-text{
+    text-align: center;
+    padding-bottom: 100px; /* Justera detta värde efter behov */
+
+}
+
+.TextOchBilder {
+    display: flex;
+}
+.tjanster {
+    display: flex;
+    flex-direction: column;
+    float: left;
+}
+
+.tjanster h3 {
+    font-size: 1.2em;
+    padding-left: 3%;
+}
+.tjanster h4 {
+    font-size: 1.1em;
+    font-weight: 500;
+    padding-left: 5%;
+}
+.tjanster p {
+    padding-left: 5%;
+    margin-bottom: 5px;
+    border-bottom: solid 1px #b3b3b3;
+    padding-bottom: 25px; /* Justera detta värde efter behov */
+}
+
+.tjanster p:last-child {
+    border-bottom: 0px;
+}
+
+.bilder {
+
+
+}
+/* Om oss sektion */
+.about-us-section {
+    padding: 50px; /* Lägg till utrymme runt innehållet */
+    text-align: center; /* Centrera texten */
+}
+
+/* Teammedlemmar */
+.team-member {
+    margin-bottom: 30px; /* Justera avstånd mellan teammedlemmar */
+}
+
+/* Ann */
+.Ann {
+    /* Lägg till specifika stildefinitioner för Ann */
+}
+
+/* Carl */
+.Carl {
+    /* Lägg till specifika stildefinitioner för Carl */
+}
+
+/* Lina */
+.Lina {
+    /* Lägg till specifika stildefinitioner för Lina */
+}
+
+/* Måns */
+.Måns {
+    /* Lägg till specifika stildefinitioner för Måns */
+}
+
+/* Övriga element */
+#NamnBildAnn, #NamnBildCarl, #NamnBildLina, #NamnBildMåns {
+    font-size: 24px; /* Justera textstorlek för namn */
+    margin-bottom: 10px; /* Justera avstånd mellan namn och andra element */
+}
+
+#pfpAnn, #pfpCarl, #pfpLina, #pfpMans {
+    border-radius: 50%; /* Runda av profilbilderna */
+    width: 150px; /* Justera storlek på profilbilderna */
+    height: 150px;
+    object-fit: cover; /* Säkerställ att bilden fyller ut cirkeln */
+    margin-bottom: 10px; /* Justera avstånd mellan profilbilder */
+}
+
+.textAnn, .textCarl {
+    font-size: 18px; /* Justera textstorlek för individuell text */
+}
+
+.lankknapp {
+    background-color: #007bff; /* Bakgrundsfärg för knappen */
+    color: #fff; /* Textfärg för knappen */
+    padding: 10px 20px; /* Utrymme inom knappen */
+    border: none; /* Ingen kantlinje */
+    border-radius: 5px; /* Runda av kanterna på knappen */
+    text-decoration: none; /* Ingen understreckad text */
+    font-weight: bold; /* Fet text */
+    transition: background-color 0.3s; /* Glattningsövergång för bakgrundsfärgen */
+}
+
+.lankknapp:hover {
+    background-color: #0056b3; /* Ändra bakgrundsfärg vid hovring */
+}
+
+.contact-form {
+    display: none;
+}
+
+/* Övriga id-n */
+
+@media (max-width:600px) {
+
+    .navbar {
+        display: none;
+    }
+    
+    .UnderTitle {
+        font-size: 2em;
+    }
+    .welcome-text{
+        padding-left: 7%;
+        padding-right: 7%;
+        padding-bottom: 50px; /* Justera detta värde efter behov */
+
+    }
+
+    .TextOchBilder {
+        display: block;
+    }
+    .tjanster {
+        font-size: 1.2em;
+        margin-right: 15%;
+        margin-left: 15%;
+    }
+    .about-us-section {
+        padding-top: 40%;
+        padding-left: 20%;
+        padding-right: 20%;
+        line-height: 1.6;
+    }
+
+    .bilder{
+        display: block;
+        margin-right: auto;
+        margin-left: 10%;
+    }
+
+
+    .bilder img {
+        width: 80%;
+        padding: 5px;
+        max-width: 200px;
+        border-radius: 12px;
+     }
+
+}
+
+@media (min-width:601px) {
+    .navbar {
+        display: none;
+    }
+
+    .tjanster {
+        min-width: 40%;
+        margin-left: 10%;
+        margin-right: 5%;
+    }
+    .bilder {
+        margin-top: 1%;
+        margin-right: auto;
+
+    }
+    .bilder img {
+        max-width: 220px;
+        margin-right: 5%;
+        margin-top: 5%;
+        border-radius: 12px;
+
+    }
+    .welcome-text{
+        max-width: 640px;
+        margin: 0 auto !important; 
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+    .tjanster {
+        margin-left: 5%;
+    }
+    .about-us-section {
+        padding-top: 10%;
+        padding-left: 20%;
+        padding-right: 20%;
+        line-height: 1.6;
+    }
+}
+
+@media (min-width:768px) {
+    .navbar {
+        display: flex;
+        font-size: 0.85rem;
+    }
+    .dropdown {
+        display: none;
+    }
+
+    .main-content {
+        
+    }
+    .welcome-text {
+
+
+    }
+    .tjanster {
+        min-width: 40%;
+        margin-left: 5%;
+    }
+    .bilder {
+        margin-top: 1%;
+        margin-right: 30%;
+
+    }
+    .bilder img {
+        max-width: 200px;
+        margin-left: 12%;
+        border-radius: 12px;
+    }
+    .welcome-text{
+        max-width: 640px;
+        margin: 0 auto !important; 
+    }
+    
+}
+
+@media (min-width:992px) {
+    .navbar {
+        font-size: 1.2em;
+    }
+
+    .tjanster {
+        font-size: 1.2em;
+        min-width: 40%;
+        margin-left: 5%;
+    }
+    .bilder {
+        margin-top: 1%;
+        margin-right: 30%;
+
+    }
+    .bilder img {
+        max-width: 280px;
+        margin-left: 30%;
+        border-radius: 12px;
+    }
+    .welcome-text{
+        max-width: 640px;
+        margin: 0 auto !important; 
+    }
+}
+
+@media (min-width:1200px) {
+    .about-us-section {
+        max-width: 900px;
+    }
+
+    .tjanster {
+        all: unset;
+        min-width: 40%;
+        margin-left: 10%;
+        max-width: 600px;
+        font-size: 1.5em;
+    }
+    .TextOchBilder {
+
+    }
+
+    .bilder {
+        all: unset;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-left: 100px;
+    }
+
+    .bilder img {
+        all: unset;
+        margin-top: 10px;
+        margin-left: 12px;
+
+        max-width: 270px;
+        border-radius: 8px;
+        overflow: hidden; /* Lägg till overflow: hidden för att säkerställa att hörnen avrundas */
+    }
+}
