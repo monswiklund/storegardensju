@@ -273,7 +273,7 @@ a:active {
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 500;
-    color: #000;
+    color: #ffffff;
     background-color: hsl(0, 0%, 32%);
     border: none;
     border-radius: 30px;
@@ -281,6 +281,7 @@ a:active {
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
+    
 }
 
 .lankknapp:hover {
@@ -290,12 +291,113 @@ a:active {
     transform: translateY(-7px);
 }
 
+.lankknappDIV {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    
+}
+
 .contact-form {
     display: none;
 }
 
 /* Övriga id-n */
 
+.kontakta-oss {
+    font-size: 1em;
+    color: black;
+
+}
+.vilkaViÄrPresentation h2 {
+    padding-top: 80px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.individuellKontakt {
+    margin-bottom: 20px;
+}
+
+.individuellKontakt a {
+    color: black;
+}
+
+@media (max-width:400px) {
+    /*=========================================*/
+    /*============= ALLMÄNT NEDANFÖR ==========*/
+    /*=========================================*/
+
+    .navbar {
+        display: none;
+    }
+    
+    /*=========================================*/
+    /*============= INDEX NEDANFÖR ===========*/
+    /*=========================================*/
+    .UnderTitle {
+        font-size: 2em;
+    }
+    .welcome-text{
+        padding-left: 7%;
+        padding-right: 7%;
+        padding-bottom: 50px; /* Justera detta värde efter behov */
+
+    }
+
+    .TextOchBilder {
+        display: block;
+    }
+    .tjanster {
+        font-size: 1.2em;
+        margin-right: 15%;
+        margin-left: 15%;
+    }
+    
+    .bilder{
+        display: block;
+        margin-right: auto;
+        margin-left: 10%;
+    }
+    
+    
+    .bilder img {
+        width: 80%;
+        padding: 5px;
+        max-width: 200px;
+        border-radius: 12px;
+    }
+    /*=========================================*/
+    /*============= OM OSS NEDANFÖR ===========*/
+    /*=========================================*/
+
+    .about-us-section {
+        all: unset;
+        text-align: center;
+        font-size: 0.8em;
+        padding-top: 40%;
+    }
+
+    .about-us-section h2 {
+        margin-left: 8%;
+        margin-right: 8%;
+        line-height: 1.1;
+
+    }
+    .about-us-section h1 {
+        font-size: 1.5em;;
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+    .team-member {
+        margin-left: 5%;
+        margin-right: 10%;
+    }
+
+    .team-member li {
+        margin-left: -20px;
+
+    }
+}
 @media (max-width:600px) {
     /*=========================================*/
     /*============= ALLMÄNT NEDANFÖR ==========*/
@@ -498,11 +600,6 @@ a:active {
         max-width: 800px;
     }
 
-    .lankknappDIV {
-        margin-top: 40px;
-        margin-bottom: 40px;
-        
-    }
 }  
 
 @media (min-width:1200px) {
