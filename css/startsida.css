@@ -322,6 +322,9 @@ a:active {
     color: black;
 }
 
+.listDIV li {
+  margin-bottom: -12px;
+}
     /*=========================================*/
     /*====== UNDER KONSTRUKTION NEDANFÖR ======*/
     /*=========================================*/
@@ -417,8 +420,21 @@ color: grey;
 
     .team-member li {
         margin-left: -20px;
+        line-height: 1.2;
 
     }
+
+    .Carl-Sammanfattning {
+      font-size: 1.1em;
+        line-height: 1.3;
+
+    }
+    
+    /*=========================================*/
+    /*====== UNDER KONSTRUKTION NEDANFÖR ======*/
+    /*=========================================*/
+
+
 }
 @media (max-width:600px) {
     /*=========================================*/
@@ -469,10 +485,13 @@ color: grey;
     /*=========================================*/
 
     .about-us-section {
-        padding-top: 40%;
-        padding-left: 20%;
-        padding-right: 20%;
+        font-size: 0.7em;
+        padding-left: 10%;
+        padding-right: 10%;
         line-height: 1.6;
+    }
+    .about-us-section h2 {
+        line-height: 1.2;
     }
 
     .team-member {
@@ -481,6 +500,11 @@ color: grey;
     }
 }
 
+    /*=========================================*/
+    /*====== UNDER KONSTRUKTION NEDANFÖR ======*/
+    /*=========================================*/
+
+    
 @media (min-width:601px) {
     /*=========================================*/
     /*============= ALLMÄNT NEDANFÖR ==========*/
@@ -531,6 +555,11 @@ color: grey;
 
 }
 
+    /*=========================================*/
+    /*====== UNDER KONSTRUKTION NEDANFÖR ======*/
+    /*=========================================*/
+
+    
 @media (min-width:768px) {
     /*=========================================*/
     /*============= ALLMÄNT NEDANFÖR ==========*/
@@ -586,7 +615,7 @@ color: grey;
     /*=========================================*/
 
     .navbar {
-        font-size: 1.2em;
+        font-size: 1em;
     }
 
     /*=========================================*/
@@ -597,6 +626,8 @@ color: grey;
         font-size: 1.2em;
         min-width: 40%;
         margin-left: 5%;
+        margin-bottom: 500px;
+
     }
     .bilder {
         margin-top: 1%;
@@ -618,11 +649,17 @@ color: grey;
     /*=========================================*/
 
     .about-us-section {
-        font-size: 1.3em;
-        max-width: 800px;
+        font-size: 1em;
+        max-width: 650px;
     }
 
 }  
+
+    /*=========================================*/
+    /*====== UNDER KONSTRUKTION NEDANFÖR ======*/
+    /*=========================================*/
+
+    
 
 @media (min-width:1200px) {
     /*=========================================*/
@@ -635,6 +672,8 @@ color: grey;
         margin-left: 10%;
         max-width: 600px;
         font-size: 1.5em;
+        margin-bottom: 300px;
+
     }
 
     /*=========================================*/
@@ -658,7 +697,95 @@ color: grey;
         margin-top: 10px;
         margin-left: 12px;
         
-        max-width: 270px;
+        max-width: 350px;
+        border-radius: 8px;
+        overflow: hidden; /* Lägg till overflow: hidden för att säkerställa att hörnen avrundas */
+    }
+    
+    /*=========================================*/
+    /*============= OM OSS NEDANFÖR ===========*/
+    /*=========================================*/
+
+    .about-us-section {
+        font-size: 1em;
+        max-width: 800px;
+        line-height: 0.2;
+    }
+
+    .about-us-section h2 {
+        line-height: 1.2;
+    }
+    .team-member {
+      margin-left: 33%;
+      margin-right: 30%;
+        width:400px;
+        height:400px;
+        display:grid;
+        grid-template-columns: 100% 100%;
+        grid-row: auto auto;
+        column-gap: 190px;
+        justify-content: center;
+    }
+    .Ann, .Carl, .Lina, .Mans, .Monday {
+    }
+
+    .lankknapp {
+    }
+    .Ann, .Lina {
+    }
+
+    .Carl, .Måns{
+    }
+
+    .individuellText {
+    }
+
+
+}
+
+    /*=========================================*/
+    /*====== UNDER KONSTRUKTION NEDANFÖR ======*/
+    /*=========================================*/
+
+    
+@media (min-width:2000px) {
+    /*=========================================*/
+    /*============= ALLMÄNT NEDANFÖR ==========*/
+    /*=========================================*/
+
+    .tjanster {
+        all: unset;
+        min-width: 40%;
+        margin-left: 10%;
+        max-width: 600px;
+        font-size: 1.5em;
+        margin-bottom: 500px;
+    }
+
+    /*=========================================*/
+    /*============= INDEX NEDANFÖR ===========*/
+    /*=========================================*/
+
+    .TextOchBilder {
+        
+    }
+    .main-section {
+        font-size: 1.4em;
+    }
+    .bilder {
+        all: unset;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-left: 100px;
+    }
+    
+    .bilder img {
+        all: unset;
+        margin-top: 10px;
+        margin-left: 12px;
+        
+        max-width: 500px;
         border-radius: 8px;
         overflow: hidden; /* Lägg till overflow: hidden för att säkerställa att hörnen avrundas */
     }
@@ -695,5 +822,92 @@ color: grey;
     .individuellText {
     }
 
+    /*=========================================*/
+    /*====== UNDER KONSTRUKTION NEDANFÖR ======*/
+    /*=========================================*/
+
+    
+
+}
+
+@media (min-width:3270px) {
+    /*=========================================*/
+    /*============= ALLMÄNT NEDANFÖR ==========*/
+    /*=========================================*/
+
+    .tjanster {
+        all: unset;
+        min-width: 40%;
+        margin-left: 10%;
+        max-width: 600px;
+        font-size: 1.5em;
+        margin-bottom: 500px;
+    }
+
+    /*=========================================*/
+    /*============= INDEX NEDANFÖR ===========*/
+    /*=========================================*/
+
+    .TextOchBilder {
+        
+    }
+    .main-section {
+        font-size: 1.4em;
+    }
+    .bilder {
+        all: unset;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-left: 100px;
+    }
+    
+    .bilder img {
+        all: unset;
+        margin-top: 10px;
+        margin-left: 12px;
+        
+        max-width: 600px;
+        border-radius: 8px;
+        overflow: hidden; /* Lägg till overflow: hidden för att säkerställa att hörnen avrundas */
+    }
+    
+    /*=========================================*/
+    /*============= OM OSS NEDANFÖR ===========*/
+    /*=========================================*/
+
+    .about-us-section {
+        font-size: 1.3em;
+        max-width: 800px;
+    }
+    .team-member {
+        margin: 20px auto;
+        width:400px;
+        height:400px;
+        display:grid;
+        grid-template-columns: 500px 500px;
+        grid-row: auto auto;
+        column-gap: 190px;
+        justify-content: center;
+    }
+    .Ann, .Carl, .Lina, .Mans, .Monday {
+    }
+
+    .lankknapp {
+    }
+    .Ann, .Lina {
+    }
+
+    .Carl, .Måns{
+    }
+
+    .individuellText {
+    }
+
+    /*=========================================*/
+    /*====== UNDER KONSTRUKTION NEDANFÖR ======*/
+    /*=========================================*/
+
+    
 
 }

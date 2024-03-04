@@ -19,21 +19,19 @@
 
 <body>
   <header>
-    <div class="allt-om-oss">
 
-      <nav class="navbar active" id="navbar">
-        <!-- Lägg till klassen "active" för att ha sidomenyn öppen som standard -->
-        <li id="startsida"><a href="index.html">Startsida</a></li>
-        <li id="skapande"><a href="under-konstruktion.html">Skapande</a></li>
-        <li id="kommandeEvenemang"><a href="under-konstruktion.html">Kommande Evenemang</a></li>
-        <li id="eventOchFest"><a href="under-konstruktion.html">Event&nbsp;&&nbsp;Fest</a></li>
-        <li id="bokning"><a href="under-konstruktion.html">Bokning</a></li>
-        <li id="galleri"><a href="under-konstruktion.html">Galleri</a></li>
-        <li id="vilkaViÄr"><a href="om_oss.html">Vilka&nbsp;vi&nbsp;är</a></li>
-        <li id="Sammarbeta"><a href="under-konstruktion.html">Sammarbeta med oss</a></li>
+    <nav class="navbar active" id="navbar">
+      <!-- Lägg till klassen "active" för att ha sidomenyn öppen som standard -->
+      <li id="startsida"><a href="index.html">Startsida</a></li>
+      <li id="skapande"><a href="under-konstruktion.html">Skapande</a></li>
+      <li id="kommandeEvenemang"><a href="under-konstruktion.html">Kommande Evenemang</a></li>
+      <li id="eventOchFest"><a href="under-konstruktion.html">Event&nbsp;&&nbsp;Fest</a></li>
+      <li id="bokning"><a href="under-konstruktion.html">Bokning</a></li>
+      <li id="galleri"><a href="under-konstruktion.html">Galleri</a></li>
+      <li id="vilkaViÄr"><a href="om_oss.html">Vilka&nbsp;vi&nbsp;är</a></li>
+      <li id="Sammarbeta"><a href="under-konstruktion.html">Sammarbeta med oss</a></li>
 
-      </nav>
-    </div>
+    </nav>
 
     <div class="dropdown">
       <button class="dropbtn" onclick="toggleDropdown()">
@@ -70,10 +68,12 @@
           som
           vi önskar.
           <br><br>
-            <h1>Skriv till oss med din förfrågan till: <br> 
-            <a class="kontakta-oss" href="mailto:info@storegardensju.se?subject=StoregårdenSju.se: "><strong>info@storegardensju.se</strong></a>
+          <h1>Skriv till oss med din förfrågan till: <br>
+            <a class="kontakta-oss"
+              href="mailto:info@storegardensju.se?subject=StoregårdenSju.se: "><strong>info@storegardensju.se</strong></a>
             <br>eller kontakta oss
-            individuellt via mail som du hittar nedanför.</h1>
+            individuellt via mail som du hittar nedanför.
+          </h1>
         </h2>
       </div>
       <div class="team-member">
@@ -97,6 +97,7 @@
           <h3>
             Utbildningar
           </h3>
+          <div class="listDIV">
           <ul>
             <li>Mönsterdesign och grafiska hantverkstekniker på Formakademin i Lidköping 1 år 2013-14.</li>
             <br><br>
@@ -109,11 +110,11 @@
             <li>Flertalet veckokurser i olika konstnärliga uttryck på olika folkhögskolor.</li>
             <br><br>
           </ul>
+          </div>
           <div class="individuellKontakt" id="kontaktAnn">
             <a href="mailto:ann.wiklund.design@gmail.com?subject=StoregårdenSju.se: ">ann.wiklund.design@gmail.com</a>
           </div>
         </div>
-
         <div class="Carl">
           <img src="pictures/avatar.png" alt="Carl Wiklund" id="pfpCarl">
           <h2 id="NamnBildCarl">Carl</h2>
@@ -125,28 +126,32 @@
           <p class="individuellText" id="textCarl">Med lång erfarenhet och bred kunskap inom branschen erbjuder jag
             skräddarsydda konsulttjänster för att maximera din verksamhets potential.
             <br><br>
-            <h3>Tjänster</h3>          
-          <ul>
-            <li> Driftsoptimering: Effektivisera processer och minska kostnader. </li>
-            <br><br>
-            <li>Menyutveckling: Skapa en lockande och lönsam meny.</li>
-            <br><br>
-            <li>Personalutbildning: Höj servicenivån med kompetent personal.</li>
-            <br><br>
-            <li>Marknadsföring och Varumärkesbyggnad: Stick ut på marknaden.</li>
-            <br><br>
-            <li>Ekonomisk Planering och Budgetering: Skapa en sund ekonomisk grund.</li>
-            <br><br>
-            <li>Eventplanering: Skapa minnesvärda evenemang för dina gäster.</li>
-            <br><br>
-            <li>Ljud och musik: Skapa spellistor och uppdatera med musik som passar perfekt till din atmosfär och
-              målgrupp.</li>
-            <br><br>
-          </ul>
+          <h3>Tjänster</h3>
+          <div class="listDIV">
+            <ul>
+              <li> Driftsoptimering: Effektivisera processer och minska kostnader. </li>
+              <br><br>
+              <li>Menyutveckling: Skapa en lockande och lönsam meny.</li>
+              <br><br>
+              <li>Personalutbildning: Höj servicenivån med kompetent personal.</li>
+              <br><br>
+              <li>Marknadsföring och Varumärkesbyggnad: Stick ut på marknaden.</li>
+              <br><br>
+              <li>Ekonomisk Planering och Budgetering: Skapa en sund ekonomisk grund.</li>
+              <br><br>
+              <li>Eventplanering: Skapa minnesvärda evenemang för dina gäster.</li>
+              <br><br>
+              <li>Ljud och musik: Skapa spellistor och uppdatera med musik som passar perfekt till din atmosfär och
+                målgrupp.</li>
+              <br><br>
+            </ul>
+          </div>
+          <div class="Carl-Sammanfattning">
           Oavsett om du driver en etablerad restaurang eller står i begrepp att öppna en ny bar, så kan jag erbjuda
           skräddarsydda konsulttjänster som passar dina behov och mål. Kontakta mig idag för att ta nästa steg mot en
-          framgångsrik och lönsam verksamhet!</li>
+          framgångsrik och lönsam verksamhet!
           </p>
+        </div>
           <div class="individuellKontakt" id="kontaktCarl">
             <a href="mailto:cw@carlwiklund.com?subject=StoregårdenSju.se: ">cw@carlwiklund.com</a>
           </div>
@@ -165,7 +170,7 @@
         <div class="Mans">
           <img src="pictures/avatar.png" alt="Måns Wiklund" id="pfpMans">
           <h2 id="NamnBildMans">Måns</h2>
-          <h4>Kunskaper inom C++, C#, Python, HTML, CSS, JavaScript</h4>
+          <h4>Kunskaper inom C++, Python, HTML, CSS, JavaScript</h4>
           <div class="individuellKontakt" id="kontaktMåns">
             <a href="mailto:monswiklund.jobb@gmail.com?subject=StoregårdenSju.se: ">monswiklund.jobb@gmail.com</a>
           </div>
