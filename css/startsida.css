@@ -322,6 +322,28 @@ a:active {
     color: black;
 }
 
+    /*=========================================*/
+    /*====== UNDER KONSTRUKTION NEDANFÖR ======*/
+    /*=========================================*/
+
+.hela-under-konstruktion {
+    display: flex;
+    justify-content: center;
+}
+.under-konstruktion {
+    margin-top: 300px;
+}
+.under-konstruktion h1 {
+text-align: center;
+line-height: 1.2;
+}
+
+#uppbyggnad-lank {
+    color: black;
+}
+#uppbyggnad-lank:hover {
+color: grey;
+}
 @media (max-width:400px) {
     /*=========================================*/
     /*============= ALLMÄNT NEDANFÖR ==========*/

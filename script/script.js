@@ -34,3 +34,12 @@ const observer = new IntersectionObserver(function(entries, observer) {
 }, options);
 // Start observing the element
 observer.observe(element);
+
+// Hämta elementet för sidebar
+var sidebar = document.getElementById('sidebar');
+
+// Lägg till en händelselyssnare för klickhändelse eller en annan händelse som passar ditt behov
+document.getElementById('din-knapp-id').addEventListener('click', function() {
+    // Toggle-klassen 'active' för att visa/dölja sidebaren
+    sidebar.classList.toggle('active');
+});

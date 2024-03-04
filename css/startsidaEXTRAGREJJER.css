@@ -1,0 +1,361 @@
+/* Grundläggande stilar */
+html, body {
+    font-family: 'Josefin Sans', sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-size: 1em;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Huvudrubrik */
+.bildlogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #ffffff;
+}
+
+.bildlogo img {
+    max-width: 100%;
+    height: auto;
+    animation: fadeIn 3s;
+    width: 100%;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Toppmeny */
+.topbar {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #333;
+    padding-top: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    flex-wrap: nowrap;
+}
+
+/* Knappar */
+.UnderTitle {
+    font-size: 2em;
+    justify-content: center;
+    text-align: center;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: grey;
+}
+
+a:visited {
+    color: white;
+}
+
+a:active {
+    color: seashell;
+}
+
+/* Länkar */
+.topbar h3 {
+    color: #fff;
+    margin: 10px 0;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.topbar h3:hover {
+    background-color: #555;
+}
+
+/* Innehåll i sidomenyn */
+.topbar-content {
+    margin-top: 60px;
+    padding: 10px;
+}
+
+/* Drop Down Button */
+.dropbtn {
+    border-radius: 2px;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.dropbtn div {
+    width: 35px;
+    height: 5px;
+    background-color: white;
+    margin: 6px 0;
+}
+
+.dropdown {
+    top: 10px;
+    left: 10px;
+    position: absolute;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #555;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    font-size: 3em;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Vilka vi är presentation */
+.vilkaViÄrPresentation {
+    max-width: 600px;
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+    padding: 0 20px;
+}
+
+.vilkaViÄrPresentation h2 {
+    padding-top: 80px;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Bilder på oss */
+.BilderPaOss {
+    font-size: 1.5em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.BilderPaOss > div {
+    flex: 1 1 45%;
+    max-width: 45%;
+    margin: 10px;
+}
+
+.BilderPaOss img {
+    max-width: 200px;
+}
+
+.BilderPaOss .individuellText {
+    color: #333;
+    line-height: 1.2;
+    max-width: 400px;
+}
+
+/* Carl hemsida */
+.lankknapp {
+    padding: 1em 2em;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    margin: 20px;
+}
+
+.lankknapp:hover {
+    background-color: #00a6ff;
+    box-shadow: 0px 10px 30px rgba(0, 149, 255, 0.6);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+.lankknapp:active {
+    transform: translateY(-1px);
+}
+
+.kontakt {
+    
+}
+
+/* Media queries */
+
+@media only screen and (max-width: 600px) {
+
+}
+
+@media only screen and (min-width: 601px) {
+
+}
+
+@media only screen and (min-width: 769px) {
+    .BilderPaOss > div {
+        flex-basis: 90%;
+        max-width: 90%;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+
+}
+
+@media only screen and (min-width: 992px) {
+}
+
+    .lankknapp {
+        margin: 30px;
+    }
+@media only screen and (min-width: 1200px) {
+
+}
+
+
+
+/* Media queries för responsiv design */
+
+/* För små enheter (mobiltelefoner, upp till 732px) */
+@media only screen and (max-width: 732px) {
+    .BilderPaOss > div {
+        flex-basis: 90%; /* Ändra flex-basis till 90% för att ha ett element per rad */
+        max-width: 90%; /* Maxbredd för flex-elementet */
+    }
+}
+
+/* För mindre enheter (mobiltelefoner, upp till 400px) */
+@media only screen and (max-width: 400px) {
+    body {
+        font-size: 1em; /* Minska textstorleken för mindre enheter */
+    }
+    .container {
+        margin: auto;
+        max-width: 800px;
+        font-size: 1.7em;
+    }
+    .main-content {
+        text-align: center;
+        min-width: 300px;
+    }
+    .text {
+        order: 2; /* Ändra ordning på texten för mindre enheter */
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .bilder {
+        order: 1; /* Ändra ordning på bilderna för mindre enheter */
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center; /* Centrera innehållet horisontellt */
+        align-items: center; /* Centrera innehållet vertikalt */
+        text-align: center; /* Centrera texten horisontellt */
+    }
+    .bilder img {
+        max-width: 200px; /* Ändra bildernas maximala bredd för mindre enheter */
+        padding: 10px; /* Lägg till mindre padding för mindre enheter */
+        border-radius: 18px;
+    }
+    .bilder img:hover {
+        transition: transform .3s; /* Lägg till en zoomeffekt vid hovring för mindre enheter */
+        transform: scale(1.2);
+    }
+}
+
+/* För större enheter (större laptops och skrivbord, upp till 758px) */
+@media only screen and (max-width: 758px) {
+    body {
+        font-size: 0.8em;
+    }
+    .sidebar {
+        display: flex;
+    }
+    .bilder img {
+        max-width: 300px; /* Ändra bildernas maximala bredd för mindre enheter */
+        padding: 10px; /* Lägg till mindre padding för mindre enheter */
+    }
+    .main-content {
+        margin: 0; /* Ta bort marginaler för mindre enheter */
+    }
+    .text {
+        order: 2; /* Ändra ordning på texten för mindre enheter */
+        max-width: 800px;
+        font-size: 1.6em;
+    }
+    .bilder {
+        order: 1; /* Ändra ordning på bilderna för mindre enheter */
+        flex-direction: row;
+        flex-wrap: wrap;
+        text-align: center; /* Centrera texten horisontellt */
+    }
+    .bilder img:hover {
+        transition: transform .4s; /* Lägg till en zoomeffekt vid hovring för mindre enheter */
+        transform: scale(1.1);
+    }
+    .tjanster {
+        order: 3;
+        font-size: 1.5em;
+    }
+    .dropbtn {
+        display: none; /* Dölj dropbtn för mindre enheter */
+    }
+}
+
+/* För extra stora enheter (stora laptops och skrivbord, upp till 1200px) */
+@media only screen and (max-width: 1200px) {
+    body {
+        font-size: 1em; /* Återställ textstorleken till normal storlek för extra stora enheter */
+    }
+    .bilder img {
+        max-width: 500px; /* Ändra bildernas maximala bredd för extra stora enheter */
+        padding: 10px; /* Lägg till mindre padding för extra stora enheter */
+        border-radius: 18px;
+    }
+    .main-content {
+        margin: 0; /* Ta bort marginaler för extra stora enheter */
+        justify-content: center; /* Centrera innehållet horisontellt */
+    }
+    .text {
+        padding-left: 20px; /* Ta bort vänster padding för texten på extra stora enheter */
+        order: 2; /* Ändra ordning på texten för extra stora enheter */
+    }
+    .bilder {
+        order: 1; /* Ändra ordning på bilderna för extra stora enheter */
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center; /* Centrera innehållet horisontellt */
+        align-items: center; /* Centrera innehållet vertikalt */
+        text-align: center; /* Centrera texten horisontellt */
+    }
+}
