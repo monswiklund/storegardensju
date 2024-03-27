@@ -25,23 +25,23 @@ class ScheduleGenerator {
 
   generateSchedule() {
     const schedule = [];
-    let availablePlayers = [...this.players];
+    const numMatches = 15; // Det önskade antalet matcher
 
     // Kontrollera att det finns minst 4 spelare för att bilda ett lag
-    if (availablePlayers.length < 4) {
+    if (this.players.length < 4) {
       console.error(
         "Det finns inte tillräckligt med spelare för att generera spelschema."
       );
       return schedule;
     }
 
-    while (availablePlayers.length >= 4) {
-      availablePlayers = shuffleArray(availablePlayers);
+    for (let i = 0; i < numMatches; i++) {
+      let availablePlayers = shuffleArray([...this.players]);
 
-      const player1 = availablePlayers.shift();
-      const player2 = availablePlayers.shift();
-      const player3 = availablePlayers.shift();
-      const player4 = availablePlayers.shift();
+      const player1 = availablePlayers[0];
+      const player2 = availablePlayers[1];
+      const player3 = availablePlayers[2];
+      const player4 = availablePlayers[3];
 
       const match = new Match([player1, player2, player3, player4]);
       schedule.push(match);
