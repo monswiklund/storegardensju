@@ -1,116 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Spelschema Generator</title>
-    <link rel="stylesheet" href="css/paddel.css" />
-  </head>
-  <body>
-    <h1>Spelschema Generator v18</h1>
-    <div id="playerMatches"></div>
-    <h3>Hur många matcher ska spelas:</h3>
-    <input type="number" id="numMatches" name="numMatches" min="1" value="" />
-    <label for="numMatches">Antal Matcher:</label>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spelschema Generator</title>
+  <link rel="stylesheet" href="css/paddel.css" />
+</head>
+<body>
+  <h1>Spelschema Generator v19</h1>
+  <div id="playerMatches"></div>
+  <h3>Hur många matcher ska spelas:</h3>
+  <input type="number" id="numMatches" name="numMatches" min="1" value="" />
+  <label for="numMatches">Antal Matcher:</label>
 
-    <form id="playerForm">
-      <label for="playerName">Spelarens Namn:</label>
-      <input type="text" id="playerName" name="playerName" />
-      <button type="button" id="addPlayerButton">Lägg till Spelare</button>
-      <ul id="playerList"></ul>
-    </form>
-    <button id="generateButton">Generera Spelschema</button>
-    <div id="schedule"></div>
+  <form id="playerForm">
+    <label for="playerName">Spelarens Namn:</label>
+    <input type="text" id="playerName" name="playerName" />
+    <button type="button" id="addPlayerButton">Lägg till Spelare</button>
+    <ul id="playerList"></ul>
+  </form>
+  <button id="generateButton">Generera Spelschema</button>
+  <div id="schedule"></div>
 
-    <script src="/script/scheduleGenerator.js"></script>
-    <script>
-      const playerForm = document.getElementById("playerForm");
-      const playerNameInput = document.getElementById("playerName");
-      const playerList = document.getElementById("playerList");
-      const generateButton = document.getElementById("generateButton");
-      const numMatchesInput = document.getElementById("numMatches");
+  <script src="/script/scheduleGenerator.js"></script>
+  <script>
+    const playerForm = document.getElementById("playerForm");
+    const playerNameInput = document.getElementById("playerName");
+    const playerList = document.getElementById("playerList");
+    const generateButton = document.getElementById("generateButton");
+    const numMatchesInput = document.getElementById("numMatches");
 
-      const players = [];
+    const players = [];
 
-      // Lägg till händelselyssnare för knappen "Lägg till Spelare"
-      document
-        .getElementById("addPlayerButton")
-        .addEventListener("click", function () {
-          addPlayer();
-        });
-
-      playerForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-        const playerName = playerNameInput.value.trim();
-        if (playerName !== "") {
-          players.push(new Player(playerName));
-          playerNameInput.value = "";
-          renderPlayerList();
-        }
+    // Lägg till händelselyssnare för knappen "Lägg till Spelare"
+    document
+      .getElementById("addPlayerButton")
+      .addEventListener("click", function () {
+        addPlayer();
       });
 
-      function renderPlayerList() {
-        playerList.innerHTML = "";
-        players.forEach((player) => {
-          const li = document.createElement("li");
-          li.textContent = player.getName();
-          playerList.appendChild(li);
-        });
+    playerForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const playerName = playerNameInput.value.trim();
+      if (playerName !== "") {
+        players.push(new Player(playerName));
+        playerNameInput.value = "";
+        renderPlayerList();
       }
+    });
 
-      generateButton.addEventListener("click", function () {
-        createSchedule();
+    function renderPlayerList() {
+      playerList.innerHTML = "";
+      players.forEach((player) => {
+        const li = document.createElement("li");
+        li.textContent = player.getName();
+        playerList.appendChild(li);
+      });
+    }
+
+    generateButton.addEventListener("click", function () {
+      createSchedule();
+    });
+
+    function createSchedule() {
+      const scheduleGenerator = new ScheduleGenerator(
+        players,
+        Number(numMatchesInput.value)
+      );
+      const schedule = scheduleGenerator.generateSchedule();
+      const scheduleDiv = document.getElementById("schedule");
+
+      // Rensa schemat
+      scheduleDiv.innerHTML = "";
+
+      // Lägg till en rubrik
+      const heading = document.createElement("h2");
+      heading.textContent = "Spelschema";
+      scheduleDiv.appendChild(heading);
+
+      // Lägg till varje match till schemat
+      schedule.forEach((match, index) => {
+        const matchDiv = document.createElement("p");
+        matchDiv.textContent = `Match ${index + 1}: ${match
+          .getPlayers()
+          .map((player) => player.getName())
+          .join(" vs ")}`;
+        scheduleDiv.appendChild(matchDiv);
       });
 
-      function createSchedule() {
-        const scheduleGenerator = new ScheduleGenerator(
-          players,
-          Number(numMatchesInput.value)
-        );
-        const schedule = scheduleGenerator.generateSchedule();
-        const scheduleDiv = document.getElementById("schedule");
+      // Uppdatera antalet matcher för varje spelare
+      const playerMatches = scheduleGenerator.getPlayerMatches();
+      renderPlayerMatches(playerMatches);
+    }
 
-        // Rensa schemat
-        scheduleDiv.innerHTML = "";
-
-        // Lägg till en rubrik
-        const heading = document.createElement("h2");
-        heading.textContent = "Spelschema";
-        scheduleDiv.appendChild(heading);
-
-        // Lägg till varje match till schemat
-        schedule.forEach((match, index) => {
-          const matchDiv = document.createElement("p");
-          matchDiv.textContent = `Match ${index + 1}: ${match
-            .getPlayers()
-            .map((player) => player.getName())
-            .join(" vs ")}`;
-          scheduleDiv.appendChild(matchDiv);
-        });
-
-        // Uppdatera antalet matcher för varje spelare
-        const playerMatches = scheduleGenerator.getPlayerMatches();
-        renderPlayerMatches(playerMatches);
+    function addPlayer() {
+      var playerName = document.getElementById("playerName").value;
+      if (playerName !== "") {
+        players.push(new Player(playerName));
+        playerNameInput.value = "";
+        renderPlayerList();
       }
+    }
 
-      function addPlayer() {
-        var playerName = document.getElementById("playerName").value;
-        if (playerName !== "") {
-          players.push(new Player(playerName));
-          playerNameInput.value = "";
-          renderPlayerList();
-        }
-      }
-
-      function renderPlayerMatches(playerMatches) {
-        var playerMatchesDiv = document.getElementById("playerMatches");
-        playerMatchesDiv.innerHTML = "";
-        playerMatches.forEach((numMatches, player) => {
-          var p = document.createElement("p");
-          p.textContent = `${player.getName()}: ${numMatches} matcher`;
-          playerMatchesDiv.appendChild(p);
-        });
-      }
-    </script>
-  </body>
+    function renderPlayerMatches(playerMatches) {
+      var playerMatchesDiv = document.getElementById("playerMatches");
+      playerMatchesDiv.innerHTML = "";
+      playerMatches.forEach((numMatches, player) => {
+        var p = document.createElement("p");
+        p.textContent = `${player.getName()}: ${numMatches} matcher`;
+        playerMatchesDiv.appendChild(p);
+      });
+    }
+  </script>
+</body>
 </html>
