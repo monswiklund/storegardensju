@@ -1,211 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Spelschema Generator</title>
+    <title>Spelschema Generator v11</title>
     <link rel="stylesheet" href="css/paddel.css" />
   </head>
   <body>
-    <h1>Spelschema Generator v14</h1>
+    <h1>Spelschema Generator v1</h1>
     <div id="playerMatches"></div>
     <h3>Hur många matcher ska spelas:</h3>
     <input type="number" id="numMatches" name="numMatches" min="1" value="" />
     <label for="numMatches">Antal Matcher:</label>
-=======
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spelschema Generator</title>
-</head>
-<body>
-  <h1>Spelschema Generator v18</h1>
-  <div id="playerMatches"></div>
-  <h3>Hur många matcher ska spelas:</h3>
-  <input type="number" id="numMatches" name="numMatches" min="1" value="" />
-  <label for="numMatches">Antal Matcher:</label>
->>>>>>> 9bc4dba07a793f9cde095331d48f3c77b2d995d5
 
-  <form id="playerForm">
-    <label for="playerName">Spelarens Namn:</label>
-    <input type="text" id="playerName" name="playerName" />
-    <button type="button" id="addPlayerButton">Lägg till Spelare</button>
-    <ul id="playerList"></ul>
-  </form>
-  <button id="generateButton">Generera Spelschema</button>
-  <div id="schedule"></div>
+    <form id="playerForm">
+      <label for="playerName">Spelarens Namn:</label>
+      <input type="text" id="playerName" name="playerName" />
+      <button type="button" id="addPlayerButton">Lägg till Spelare</button>
+      <ul id="playerList"></ul>
+    </form>
+    <button id="generateButton">Generera Spelschema</button>
+    <div id="schedule"></div>
 
-  <script>
-    // Klass för Match
-    class Match {
-      constructor(players) {
-        this.players = players;
-      }
+    <script src="/script/scheduleGenerator.js"></script>
+    <script>
+      const playerForm = document.getElementById("playerForm");
+      const playerNameInput = document.getElementById("playerName");
+      const playerList = document.getElementById("playerList");
+      const generateButton = document.getElementById("generateButton");
+      const numMatchesInput = document.getElementById("numMatches");
 
-      getPlayers() {
-        return this.players;
-      }
-    }
+      const players = [];
 
-    // Klass för Player
-    class Player {
-      constructor(name) {
-        this.name = name;
-      }
-
-      getName() {
-        return this.name;
-      }
-    }
-
-    // Klass för ScheduleGenerator
-    class ScheduleGenerator {
-      constructor(players, numMatches) {
-        this.players = players;
-        this.numMatches = numMatches;
-        this.playerMatches = new Map(players.map((player) => [player, 0]));
-      }
-
-      getPlayerMatches() {
-        return this.playerMatches;
-      }
-
-      generateSchedule() {
-        const schedule = [];
-        const numPlayers = this.players.length;
-        const matchesPerPlayer = Math.floor(this.numMatches / numPlayers); // Optimalt antal matcher per spelare
-
-        // Kontrollera att det finns minst 4 spelare för att generera ett schema
-        if (numPlayers < 4) {
-          console.error("Det finns inte tillräckligt med spelare för att generera ett schema.");
-          return schedule;
-        }
-
-        // Skapa matcher för varje spelare
-        this.players.forEach((player) => {
-          for (let i = 0; i < matchesPerPlayer; i++) {
-            const match = new Match([player]); // Skapa en match med en spelare
-            schedule.push(match);
-            this.playerMatches.set(player, this.playerMatches.get(player) + 1);
-          }
+      // Lägg till händelselyssnare för knappen "Lägg till Spelare"
+      document
+        .getElementById("addPlayerButton")
+        .addEventListener("click", function () {
+          addPlayer();
         });
 
-        // Justera antalet matcher för varje spelare om det finns restmatcher
-        const remainingMatches = this.numMatches % numPlayers;
-        if (remainingMatches > 0) {
-          for (let i = 0; i < remainingMatches; i++) {
-            const player = this.players[i]; // Välj spelare i ordning från början
-            const match = new Match([player]);
-            schedule.push(match);
-            this.playerMatches.set(player, this.playerMatches.get(player) + 1);
-          }
+      playerForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const playerName = playerNameInput.value.trim();
+        if (playerName !== "") {
+          players.push(new Player(playerName));
+          playerNameInput.value = "";
+          renderPlayerList();
         }
-
-        return schedule;
-      }
-    }
-
-    // Array för att lagra spelare
-    const players = [];
-
-    // Funktion för att lägga till spelare
-    function addPlayer() {
-      var playerName = document.getElementById("playerName").value;
-      if (playerName !== "") {
-        players.push(new Player(playerName));
-        document.getElementById("playerName").value = "";
-        renderPlayerList();
-      }
-    }
-
-    // Funktion för att rendera spelarlistan
-    function renderPlayerList() {
-      var playerList = document.getElementById("playerList");
-      // Rensa listan
-      playerList.innerHTML = "";
-      // Lägg till varje spelare till listan
-      players.forEach(function (player) {
-        var li = document.createElement("li");
-        li.textContent = player.name;
-        playerList.appendChild(li);
       });
-      playerNameInput.value = "";
-    }
 
-    // Funktion för att rendera schemat
-    function renderSchedule(schedule) {
-      var scheduleDiv = document.getElementById("schedule");
-      // Rensa schemat
-      scheduleDiv.innerHTML = "";
-      // Lägg till varje match till schemat
-      schedule.forEach(function (match, index) {
-        var matchDiv = document.createElement("div");
-        var players = match.getPlayers();
-        matchDiv.textContent =
-          "Match " +
-          (index + 1) +
-          ": " +
-          players
-            .slice(0, 2)
+      function renderPlayerList() {
+        playerList.innerHTML = "";
+        players.forEach((player) => {
+          const li = document.createElement("li");
+          li.textContent = player.getName();
+          playerList.appendChild(li);
+        });
+      }
+
+      generateButton.addEventListener("click", function () {
+        createSchedule();
+      });
+
+      function createSchedule() {
+        const scheduleGenerator = new ScheduleGenerator(
+          players,
+          Number(numMatchesInput.value)
+        );
+        const schedule = scheduleGenerator.generateSchedule();
+        const scheduleDiv = document.getElementById("schedule");
+
+        // Rensa schemat
+        scheduleDiv.innerHTML = "";
+
+        // Lägg till en rubrik
+        const heading = document.createElement("h2");
+        heading.textContent = "Spelschema";
+        scheduleDiv.appendChild(heading);
+
+        // Lägg till varje match till schemat
+        schedule.forEach((match, index) => {
+          const matchDiv = document.createElement("p");
+          matchDiv.textContent = `Match ${index + 1}: ${match
+            .getPlayers()
             .map((player) => player.getName())
-            .join(" och ") +
-          " mot " +
-          players
-            .slice(2)
-            .map((player) => player.getName())
-            .join(" och ");
-        scheduleDiv.appendChild(matchDiv);
-      });
-    }
+            .join(" vs ")}`;
+          scheduleDiv.appendChild(matchDiv);
+        });
 
-    // Funktion för att rendera antalet matcher för varje spelare
-    function renderPlayerMatches(playerMatches) {
-      var playerMatchesDiv = document.getElementById("playerMatches");
-      // Rensa listan
-      playerMatchesDiv.innerHTML = "";
-      // Lägg till antalet matcher för varje spelare
-      playerMatches.forEach((player, numMatches) => {
-        var p = document.createElement("p");
-        p.textContent = `${player.getName()}: ${numMatches} matcher`;
-        playerMatchesDiv.appendChild(p);
-      });
-    }
-
-    // Funktion för att skapa schemat
-    function createSchedule() {
-      const numMatchesInput = document.getElementById("numMatches");
-      const numMatches = Number(numMatchesInput.value);
-
-      const scheduleGenerator = new ScheduleGenerator(players, numMatches);
-      const schedule = scheduleGenerator.generateSchedule();
-      renderSchedule(schedule);
-
-      // Skriv ut hur många matcher varje spelare spelar
-      const playerMatches = scheduleGenerator.getPlayerMatches();
-      renderPlayerMatches(playerMatches);
-    }
-
-    // Funktion för att blanda array
-    function shuffleArray(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+        // Uppdatera antalet matcher för varje spelare
+        const playerMatches = scheduleGenerator.getPlayerMatches();
+        renderPlayerMatches(playerMatches);
       }
-      return array;
-    }
 
-    // Lägg till händelselyssnare för knappen "Lägg till Spelare"
-    document.getElementById("addPlayerButton").addEventListener("click", addPlayer);
+      function addPlayer() {
+        var playerName = document.getElementById("playerName").value;
+        if (playerName !== "") {
+          players.push(new Player(playerName));
+          playerNameInput.value = "";
+          renderPlayerList();
+        }
+      }
 
-    // Lägg till händelselyssnare för formuläret för att lägga till spelare
-    document.getElementById("playerForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      addPlayer();
-    });
-
-    // Lägg till händelselyssnare för knappen "Generera Spelschema"
-    document.getElementById("generateButton").addEventListener("click", createSchedule);
-  </script>
-</body>
+      function renderPlayerMatches(playerMatches) {
+        var playerMatchesDiv = document.getElementById("playerMatches");
+        playerMatchesDiv.innerHTML = "";
+        playerMatches.forEach((numMatches, player) => {
+          var p = document.createElement("p");
+          p.textContent = `${player.getName()}: ${numMatches} matcher`;
+          playerMatchesDiv.appendChild(p);
+        });
+      }
+    </script>
+  </body>
 </html>

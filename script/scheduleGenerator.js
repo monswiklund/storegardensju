@@ -1,4 +1,3 @@
-// Klass för Match
 class Match {
   constructor(players) {
     this.players = players;
@@ -9,7 +8,6 @@ class Match {
   }
 }
 
-// Klass för Player
 class Player {
   constructor(name) {
     this.name = name;
@@ -20,7 +18,6 @@ class Player {
   }
 }
 
-// Klass för ScheduleGenerator
 class ScheduleGenerator {
   constructor(players, numMatches) {
     this.players = players;
@@ -31,46 +28,51 @@ class ScheduleGenerator {
   getPlayerMatches() {
     return this.playerMatches;
   }
-
   generateSchedule() {
     const schedule = [];
-    const numPlayers = this.players.length;
-    const matchesPerPlayer = Math.floor(this.numMatches / numPlayers); // Optimalt antal matcher per spelare
+    const numMatches = this.numMatches; // Det önskade antalet matcher
 
-    // Kontrollera att det finns minst 4 spelare för att generera ett schema
-    if (numPlayers < 4) {
-      console.error("Det finns inte tillräckligt med spelare för att generera ett schema.");
+    // Kontrollera att det finns minst 4 spelare för att bilda ett lag
+    if (this.players.length < 4) {
+      console.error(
+        "Det finns inte tillräckligt med spelare för att generera spelschema."
+      );
       return schedule;
     }
 
-    // Skapa matcher för varje spelare
-    this.players.forEach((player) => {
-      for (let i = 0; i < matchesPerPlayer; i++) {
-        const match = new Match([player]); // Skapa en match med en spelare
-        schedule.push(match);
-        this.playerMatches.set(player, this.playerMatches.get(player) + 1);
-      }
-    });
+    for (let i = 0; i < numMatches; i++) {
+      let availablePlayers = shuffleArray([...this.players]);
 
-    // Justera antalet matcher för varje spelare om det finns restmatcher
-    const remainingMatches = this.numMatches % numPlayers;
-    if (remainingMatches > 0) {
-      for (let i = 0; i < remainingMatches; i++) {
-        const player = this.players[i]; // Välj spelare i ordning från början
-        const match = new Match([player]);
-        schedule.push(match);
-        this.playerMatches.set(player, this.playerMatches.get(player) + 1);
+      // Skapa en kopia av spelarlistan vid varje matchgenerering
+      let remainingPlayers = [...this.players];
+
+      const team = [];
+
+      // Välj fyra spelare som inte redan har deltagit i någon match
+      while (team.length < 4) {
+        const player = availablePlayers.shift();
+        if (remainingPlayers.includes(player)) {
+          team.push(player);
+          remainingPlayers = remainingPlayers.filter((p) => p !== player);
+        }
       }
+
+      const match = new Match(team);
+      schedule.push(match);
     }
 
     return schedule;
   }
 }
 
-// Array för att lagra spelare
-const players = [];
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
 
-// Funktion för att lägga till spelare
 function addPlayer() {
   var playerName = document.getElementById("playerName").value;
   if (playerName !== "") {
@@ -80,7 +82,6 @@ function addPlayer() {
   }
 }
 
-// Funktion för att rendera spelarlistan
 function renderPlayerList() {
   var playerList = document.getElementById("playerList");
   // Rensa listan
@@ -94,7 +95,6 @@ function renderPlayerList() {
   playerNameInput.value = "";
 }
 
-// Funktion för att rendera schemat
 function renderSchedule(schedule) {
   var scheduleDiv = document.getElementById("schedule");
   // Rensa schemat
@@ -120,20 +120,18 @@ function renderSchedule(schedule) {
   });
 }
 
-// Funktion för att rendera antalet matcher för varje spelare
 function renderPlayerMatches(playerMatches) {
   var playerMatchesDiv = document.getElementById("playerMatches");
   // Rensa listan
   playerMatchesDiv.innerHTML = "";
   // Lägg till antalet matcher för varje spelare
-  playerMatches.forEach((player, numMatches) => {
+  playerMatches.forEach((numMatches, player) => {
     var p = document.createElement("p");
     p.textContent = `${player.getName()}: ${numMatches} matcher`;
     playerMatchesDiv.appendChild(p);
   });
 }
 
-// Funktion för att skapa schemat
 function createSchedule() {
   const numMatchesInput = document.getElementById("numMatches");
   const numMatches = Number(numMatchesInput.value);
@@ -145,13 +143,4 @@ function createSchedule() {
   // Skriv ut hur många matcher varje spelare spelar
   const playerMatches = scheduleGenerator.getPlayerMatches();
   renderPlayerMatches(playerMatches);
-}
-
-// Funktion för att blanda array
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
 }
