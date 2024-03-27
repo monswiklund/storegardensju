@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+  </head>
+  <body>
+    <button onclick="createSchedule()">Skapa spelschema</button>
+
+    <script>
+      function createSchedule() {
+        var players = [
+          new Player("Spelare 1"),
+          new Player("Spelare 2"),
+          new Player("Spelare 3"),
+          new Player("Spelare 4"),
+        ];
+        var schedule = new Schedule();
+        schedule.generateSchedule(players);
+        // Nu kan du visa schemat på din hemsida
+      }
+    </script>
+
+    <script src="schedule.js"></script>
+  </body>
+</html>
