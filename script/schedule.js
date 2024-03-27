@@ -1,7 +1,10 @@
 class Match {
-  constructor(team1, team2) {
-    this.team1 = team1;
-    this.team2 = team2;
+  constructor(players) {
+    this.players = players;
+  }
+
+  getPlayers() {
+    return this.players;
   }
 }
 
@@ -9,31 +12,46 @@ class Player {
   constructor(name) {
     this.name = name;
   }
+
+  getName() {
+    return this.name;
+  }
 }
 
-class Schedule {
-  constructor() {
-    this.matches = [];
+class ScheduleGenerator {
+  constructor(players) {
+    this.players = players;
   }
 
-  addMatch(match) {
-    this.matches.push(match);
-  }
+  generateSchedule() {
+    const schedule = [];
+    let availablePlayers = [...this.players];
 
-  generateSchedule(players) {
-    if (players.length % 4 !== 0) {
-      throw new Error("Antalet spelare måste vara en multipel av 4");
+    while (availablePlayers.length >= 4) {
+      availablePlayers = shuffleArray(availablePlayers);
+
+      const player1 = availablePlayers.shift();
+      const player2 = availablePlayers.shift();
+      const player3 = availablePlayers.shift();
+      const player4 = availablePlayers.shift();
+
+      const match = new Match([player1, player2, player3, player4]);
+      schedule.push(match);
+
+      availablePlayers.push(player1);
+      availablePlayers.push(player2);
+      availablePlayers.push(player3);
+      availablePlayers.push(player4);
     }
 
-    // Blanda spelarna
-    players.sort(() => Math.random() - 0.5);
-
-    for (let i = 0; i < players.length; i += 4) {
-      const match = new Match(
-        [players[i], players[i + 1]],
-        [players[i + 2], players[i + 3]]
-      );
-      this.addMatch(match);
-    }
+    return schedule;
   }
+}
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
 }

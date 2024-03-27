@@ -1,32 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spelschema Generator</title>
   </head>
   <body>
-    <button onclick="createSchedule()">Skapa spelschema</button>
+    <h1>Spelschema Generator</h1>
+    <button id="generateButton">Generera Spelschema</button>
+    <div id="schedule"></div>
 
-    <input type="text" id="playerName" placeholder="Skriv in spelarnamn" />
-    <button onclick="addPlayer()">Lägg till spelare</button>
-    <button onclick="createSchedule()">Skapa spelschema</button>
-
+    <script src="scheduleGenerator.js"></script>
     <script>
-      var players = [];
+      document
+        .getElementById("generateButton")
+        .addEventListener("click", function () {
+          const players = [
+            new Player("Spelare 1"),
+            new Player("Spelare 2"),
+            new Player("Spelare 3"),
+            // Lägg till fler spelare här vid behov
+          ];
 
-      function addPlayer() {
-        var playerName = document.getElementById("playerName").value;
-        players.push(new Player(playerName));
-        document.getElementById("playerName").value = "";
-      }
+          const scheduleGenerator = new ScheduleGenerator(players);
+          const schedule = scheduleGenerator.generateSchedule();
+          const scheduleDiv = document.getElementById("schedule");
 
-      function createSchedule() {
-        var schedule = new Schedule();
-        schedule.generateSchedule(players);
-        // Nu kan du visa schemat på din hemsida
-      }
+          scheduleDiv.innerHTML = "<h2>Spelschema</h2>";
+          schedule.forEach((match, index) => {
+            scheduleDiv.innerHTML += `<p>Match ${index + 1}: ${match
+              .getPlayers()
+              .map((player) => player.getName())
+              .join(" vs ")} </p>`;
+          });
+        });
     </script>
-
-    <script src="schedule.js"></script>
   </body>
 </html>
