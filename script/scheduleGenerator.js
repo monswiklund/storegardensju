@@ -24,6 +24,9 @@ class ScheduleGenerator {
     this.playerMatches = new Map(players.map((player) => [player, 0]));
   }
 
+  getPlayerMatches() {
+    return this.playerMatches;
+  }
   generateSchedule() {
     const schedule = [];
     const numMatches = 15; // Det önskade antalet matcher
@@ -100,18 +103,33 @@ function renderSchedule(schedule) {
   // Lägg till varje match till schemat
   schedule.forEach(function (match, index) {
     var matchDiv = document.createElement("div");
+    var players = match.getPlayers();
     matchDiv.textContent =
       "Match " +
       (index + 1) +
       ": " +
-      match.team1.map((player) => player.name).join(" och ") +
+      players
+        .slice(0, 2)
+        .map((player) => player.getName())
+        .join(" och ") +
       " mot " +
-      match.team2.map((player) => player.name).join(" och ");
+      players
+        .slice(2)
+        .map((player) => player.getName())
+        .join(" och ");
     scheduleDiv.appendChild(matchDiv);
   });
 }
+
 function createSchedule() {
-  var scheduleGenerator = new ScheduleGenerator(players);
-  var schedule = scheduleGenerator.generateSchedule();
+  const scheduleGenerator = new ScheduleGenerator(players);
+  const schedule = scheduleGenerator.generateSchedule();
   renderSchedule(schedule);
+
+  // Skriv ut hur många matcher varje spelare spelar
+  const playerMatches = scheduleGenerator.getPlayerMatches();
+  console.log("Antal matcher per spelare:");
+  for (const [player, numMatches] of playerMatches.entries()) {
+    console.log(`${player.getName()}: ${numMatches}`);
+  }
 }
