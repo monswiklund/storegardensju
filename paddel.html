@@ -3,17 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Spelschema Generator</title>
+    <title>Spelschema Generator v7</title>
   </head>
   <body>
-    <h1>Spelschema Generator v7</h1>
+    <h1>Spelschema Generator v8</h1>
     <div id="playerMatches"></div>
-    <div></div>
-    <label for="numMatches">Antal Matcher:</label>
-    <div></div>
-
     <input type="number" id="numMatches" name="numMatches" min="1" value="" />
-    <div></div>
+    <label for="numMatches">Antal Matcher:</label>
 
     <form id="playerForm">
       <label for="playerName">Spelarens Namn:</label>
@@ -30,6 +26,7 @@
       const playerNameInput = document.getElementById("playerName");
       const playerList = document.getElementById("playerList");
       const generateButton = document.getElementById("generateButton");
+      const numMatchesInput = document.getElementById("numMatches");
 
       const players = [];
 
@@ -64,7 +61,10 @@
       });
 
       function createSchedule() {
-        const scheduleGenerator = new ScheduleGenerator(players);
+        const scheduleGenerator = new ScheduleGenerator(
+          players,
+          Number(numMatchesInput.value)
+        );
         const schedule = scheduleGenerator.generateSchedule();
         const scheduleDiv = document.getElementById("schedule");
 
@@ -84,6 +84,29 @@
             .map((player) => player.getName())
             .join(" vs ")}`;
           scheduleDiv.appendChild(matchDiv);
+        });
+
+        // Uppdatera antalet matcher för varje spelare
+        const playerMatches = scheduleGenerator.getPlayerMatches();
+        renderPlayerMatches(playerMatches);
+      }
+
+      function addPlayer() {
+        var playerName = document.getElementById("playerName").value;
+        if (playerName !== "") {
+          players.push(new Player(playerName));
+          playerNameInput.value = "";
+          renderPlayerList();
+        }
+      }
+
+      function renderPlayerMatches(playerMatches) {
+        var playerMatchesDiv = document.getElementById("playerMatches");
+        playerMatchesDiv.innerHTML = "";
+        playerMatches.forEach((numMatches, player) => {
+          var p = document.createElement("p");
+          p.textContent = `${player.getName()}: ${numMatches} matcher`;
+          playerMatchesDiv.appendChild(p);
         });
       }
     </script>
