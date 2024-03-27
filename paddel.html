@@ -25,6 +25,13 @@
 
       const players = [];
 
+      // Lägg till händelselyssnare för knappen "Lägg till Spelare"
+      document
+        .getElementById("addPlayerButton")
+        .addEventListener("click", function () {
+          addPlayer();
+        });
+
       playerForm.addEventListener("submit", function (event) {
         event.preventDefault();
         const playerName = playerNameInput.value.trim();
@@ -45,6 +52,10 @@
       }
 
       generateButton.addEventListener("click", function () {
+        createSchedule();
+      });
+
+      function createSchedule() {
         const scheduleGenerator = new ScheduleGenerator(players);
         const schedule = scheduleGenerator.generateSchedule();
         const scheduleDiv = document.getElementById("schedule");
@@ -65,20 +76,6 @@
             .map((player) => player.getName())
             .join(" vs ")}`;
           scheduleDiv.appendChild(matchDiv);
-        });
-      });
-
-      function createSchedule() {
-        const scheduleGenerator = new ScheduleGenerator(players);
-        const schedule = scheduleGenerator.generateSchedule();
-        const scheduleDiv = document.getElementById("schedule");
-
-        scheduleDiv.innerHTML = "<h2>Spelschema</h2>";
-        schedule.forEach((match, index) => {
-          scheduleDiv.innerHTML += `<p>Match ${index + 1}: ${match
-            .getPlayers()
-            .map((player) => player.getName())
-            .join(" vs ")} </p>`;
         });
       }
     </script>
