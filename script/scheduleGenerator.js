@@ -48,39 +48,54 @@ class ScheduleGenerator {
   getPlayerMatches() {
     return this.playerMatches;
   }
+  class ScheduleGenerator {
+  constructor(players, numMatches) {
+    this.players = players;
+    this.numMatches = numMatches;
+    this.playerMatches = new Map(players.map((player) => [player, 0]));
+  }
+
+  getPlayerMatches() {
+    return this.playerMatches;
+  }
+
   generateSchedule() {
     const schedule = [];
-    const numMatches = this.numMatches; // Det önskade antalet matcher
+    const numPlayers = this.players.length;
+    const matchesPerPlayer = Math.floor(this.numMatches / numPlayers); // Optimalt antal matcher per spelare
 
     // Kontrollera att det finns minst 4 spelare för att bilda ett lag
-    if (this.players.length < 4) {
+    if (numPlayers < 4) {
       console.error(
         "Det finns inte tillräckligt med spelare för att generera spelschema."
       );
       return schedule;
     }
 
-    for (let i = 0; i < numMatches; i++) {
-      let availablePlayers = shuffleArray([...this.players]);
-
-      const team = [];
-
-      // Välj fyra spelare som inte redan har deltagit i någon match
-      while (team.length < 4) {
-        const player = availablePlayers.shift();
-        if (this.playerMatches.get(player) < numMatches) {
-          team.push(player);
-          this.playerMatches.set(player, this.playerMatches.get(player) + 1);
-        }
+    // Skapa matcher för varje spelare
+    this.players.forEach((player) => {
+      for (let i = 0; i < matchesPerPlayer; i++) {
+        const match = new Match([player]); // Skapa en match med en spelare
+        schedule.push(match);
+        this.playerMatches.set(player, this.playerMatches.get(player) + 1);
       }
+    });
 
-      const match = new Match(team);
-      schedule.push(match);
+    // Justera antalet matcher för varje spelare om det finns restmatcher
+    const remainingMatches = this.numMatches % numPlayers;
+    if (remainingMatches > 0) {
+      for (let i = 0; i < remainingMatches; i++) {
+        const player = this.players[i]; // Välj spelare i ordning från början
+        const match = new Match([player]);
+        schedule.push(match);
+        this.playerMatches.set(player, this.playerMatches.get(player) + 1);
+      }
     }
 
     return schedule;
   }
 }
+
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
