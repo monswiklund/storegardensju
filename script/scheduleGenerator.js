@@ -25,7 +25,15 @@ class ScheduleGenerator {
 
   generateSchedule() {
     const schedule = [];
-    let availablePlayers = [...this.players];
+    const availablePlayers = [...this.players];
+
+    // Kontrollera att det finns minst 4 spelare för att bilda ett lag
+    if (availablePlayers.length < 4) {
+      console.error(
+        "Det finns inte tillräckligt med spelare för att generera spelschema."
+      );
+      return schedule;
+    }
 
     while (availablePlayers.length >= 4) {
       availablePlayers = shuffleArray(availablePlayers);
