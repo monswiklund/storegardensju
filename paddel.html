@@ -7,33 +7,56 @@
   </head>
   <body>
     <h1>Spelschema Generator</h1>
+    <form id="playerForm">
+      <label for="playerName">Spelarens Namn:</label>
+      <input type="text" id="playerName" name="playerName" />
+      <button type="button" id="addPlayerButton">Lägg till Spelare</button>
+      <ul id="playerList"></ul>
+    </form>
     <button id="generateButton">Generera Spelschema</button>
     <div id="schedule"></div>
 
     <script src="scheduleGenerator.js"></script>
     <script>
-      document
-        .getElementById("generateButton")
-        .addEventListener("click", function () {
-          const players = [
-            new Player("Spelare 1"),
-            new Player("Spelare 2"),
-            new Player("Spelare 3"),
-            // Lägg till fler spelare här vid behov
-          ];
+      const playerForm = document.getElementById("playerForm");
+      const playerNameInput = document.getElementById("playerName");
+      const playerList = document.getElementById("playerList");
+      const generateButton = document.getElementById("generateButton");
 
-          const scheduleGenerator = new ScheduleGenerator(players);
-          const schedule = scheduleGenerator.generateSchedule();
-          const scheduleDiv = document.getElementById("schedule");
+      const players = [];
 
-          scheduleDiv.innerHTML = "<h2>Spelschema</h2>";
-          schedule.forEach((match, index) => {
-            scheduleDiv.innerHTML += `<p>Match ${index + 1}: ${match
-              .getPlayers()
-              .map((player) => player.getName())
-              .join(" vs ")} </p>`;
-          });
+      playerForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const playerName = playerNameInput.value.trim();
+        if (playerName !== "") {
+          players.push(new Player(playerName));
+          playerNameInput.value = "";
+          renderPlayerList();
+        }
+      });
+
+      function renderPlayerList() {
+        playerList.innerHTML = "";
+        players.forEach((player) => {
+          const li = document.createElement("li");
+          li.textContent = player.getName();
+          playerList.appendChild(li);
         });
+      }
+
+      generateButton.addEventListener("click", function () {
+        const scheduleGenerator = new ScheduleGenerator(players);
+        const schedule = scheduleGenerator.generateSchedule();
+        const scheduleDiv = document.getElementById("schedule");
+
+        scheduleDiv.innerHTML = "<h2>Spelschema</h2>";
+        schedule.forEach((match, index) => {
+          scheduleDiv.innerHTML += `<p>Match ${index + 1}: ${match
+            .getPlayers()
+            .map((player) => player.getName())
+            .join(" vs ")} </p>`;
+        });
+      });
     </script>
   </body>
 </html>
