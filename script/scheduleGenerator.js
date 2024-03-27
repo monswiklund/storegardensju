@@ -30,7 +30,7 @@ class ScheduleGenerator {
   }
   generateSchedule() {
     const schedule = [];
-    const numMatches = 15; // Det önskade antalet matcher
+    const numMatches = this.numMatches; // Det önskade antalet matcher
 
     // Kontrollera att det finns minst 4 spelare för att bilda ett lag
     if (this.players.length < 4) {
