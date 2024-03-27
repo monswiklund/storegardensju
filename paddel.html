@@ -45,6 +45,10 @@
       }
 
       generateButton.addEventListener("click", function () {
+        createSchedule();
+      });
+
+      function createSchedule() {
         const scheduleGenerator = new ScheduleGenerator(players);
         const schedule = scheduleGenerator.generateSchedule();
         const scheduleDiv = document.getElementById("schedule");
@@ -56,7 +60,7 @@
             .map((player) => player.getName())
             .join(" vs ")} </p>`;
         });
-      });
+      }
     </script>
   </body>
 </html>

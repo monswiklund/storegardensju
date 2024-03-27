@@ -76,3 +76,26 @@ function renderPlayerList() {
     playerList.appendChild(li);
   });
 }
+
+function renderSchedule(schedule) {
+  var scheduleDiv = document.getElementById("schedule");
+  // Rensa schemat
+  scheduleDiv.innerHTML = "";
+  // Lägg till varje match till schemat
+  schedule.forEach(function (match, index) {
+    var matchDiv = document.createElement("div");
+    matchDiv.textContent =
+      "Match " +
+      (index + 1) +
+      ": " +
+      match.team1.map((player) => player.name).join(" och ") +
+      " mot " +
+      match.team2.map((player) => player.name).join(" och ");
+    scheduleDiv.appendChild(matchDiv);
+  });
+}
+function createSchedule() {
+  var schedule = new Schedule();
+  schedule.generateSchedule(players);
+  renderSchedule(schedule.matches);
+}
