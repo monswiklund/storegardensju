@@ -19,8 +19,9 @@ class Player {
 }
 
 class ScheduleGenerator {
-  constructor(players) {
+  constructor(players, numMatches) {
     this.players = players;
+    this.numMatches = numMatches;
     this.playerMatches = new Map(players.map((player) => [player, 0]));
   }
 
@@ -121,15 +122,27 @@ function renderSchedule(schedule) {
   });
 }
 
+function renderPlayerMatches(playerMatches) {
+  var playerMatchesDiv = document.getElementById("playerMatches");
+  // Rensa listan
+  playerMatchesDiv.innerHTML = "";
+  // Lägg till antalet matcher för varje spelare
+  for (const [player, numMatches] of playerMatches.entries()) {
+    var p = document.createElement("p");
+    p.textContent = `${player.getName()}: ${numMatches} matcher`;
+    playerMatchesDiv.appendChild(p);
+  }
+}
+
 function createSchedule() {
-  const scheduleGenerator = new ScheduleGenerator(players);
+  const numMatchesInput = document.getElementById("numMatches");
+  const numMatches = Number(numMatchesInput.value);
+
+  const scheduleGenerator = new ScheduleGenerator(players, numMatches);
   const schedule = scheduleGenerator.generateSchedule();
   renderSchedule(schedule);
 
   // Skriv ut hur många matcher varje spelare spelar
   const playerMatches = scheduleGenerator.getPlayerMatches();
-  console.log("Antal matcher per spelare:");
-  for (const [player, numMatches] of playerMatches.entries()) {
-    console.log(`${player.getName()}: ${numMatches}`);
-  }
+  renderPlayerMatches(playerMatches);
 }
