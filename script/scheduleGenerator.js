@@ -21,6 +21,7 @@ class Player {
 class ScheduleGenerator {
   constructor(players) {
     this.players = players;
+    this.playerMatches = new Map(players.map((player) => [player, 0]));
   }
 
   generateSchedule() {
@@ -38,10 +39,21 @@ class ScheduleGenerator {
     for (let i = 0; i < numMatches; i++) {
       let availablePlayers = shuffleArray([...this.players]);
 
+      // Sortera spelarna baserat på hur många matcher de har spelat
+      availablePlayers.sort(
+        (a, b) => this.playerMatches.get(a) - this.playerMatches.get(b)
+      );
+
       const player1 = availablePlayers[0];
       const player2 = availablePlayers[1];
       const player3 = availablePlayers[2];
       const player4 = availablePlayers[3];
+
+      // Uppdatera antalet matcher för varje spelare
+      this.playerMatches.set(player1, this.playerMatches.get(player1) + 1);
+      this.playerMatches.set(player2, this.playerMatches.get(player2) + 1);
+      this.playerMatches.set(player3, this.playerMatches.get(player3) + 1);
+      this.playerMatches.set(player4, this.playerMatches.get(player4) + 1);
 
       const match = new Match([player1, player2, player3, player4]);
       schedule.push(match);
