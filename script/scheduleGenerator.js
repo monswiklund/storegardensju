@@ -147,4 +147,16 @@ function createSchedule() {
   // Skriv ut hur många matcher varje spelare spelar
   const playerMatches = scheduleGenerator.getPlayerMatches();
   renderPlayerMatches(playerMatches);
+
+  // Uppdatera antalet matcher för varje spelare direkt efter att schemat har genererats
+  players.forEach((player) => {
+    const numPlayerMatches = schedule.reduce(
+      (count, match) => count + (match.getPlayers().includes(player) ? 1 : 0),
+      0
+    );
+    scheduleGenerator.playerMatches.set(player, numPlayerMatches);
+  });
+
+  // Skriv ut uppdaterade antalet matcher för varje spelare
+  renderPlayerMatches(scheduleGenerator.getPlayerMatches());
 }
