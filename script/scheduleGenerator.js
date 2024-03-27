@@ -75,6 +75,7 @@ function renderPlayerList() {
     li.textContent = player.name;
     playerList.appendChild(li);
   });
+  playerNameInput.value = "";
 }
 
 function renderSchedule(schedule) {
