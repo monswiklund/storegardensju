@@ -125,11 +125,11 @@ function renderPlayerMatches(playerMatches) {
   // Rensa listan
   playerMatchesDiv.innerHTML = "";
   // Lägg till antalet matcher för varje spelare
-  for (const [player, numMatches] of playerMatches.entries()) {
+  playerMatches.forEach((numMatches, player) => {
     var p = document.createElement("p");
     p.textContent = `${player.getName()}: ${numMatches} matcher`;
     playerMatchesDiv.appendChild(p);
-  }
+  });
 }
 
 function createSchedule() {
