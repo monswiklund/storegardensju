@@ -45,7 +45,27 @@
       }
 
       generateButton.addEventListener("click", function () {
-        createSchedule();
+        const scheduleGenerator = new ScheduleGenerator(players);
+        const schedule = scheduleGenerator.generateSchedule();
+        const scheduleDiv = document.getElementById("schedule");
+
+        // Rensa schemat
+        scheduleDiv.innerHTML = "";
+
+        // Lägg till en rubrik
+        const heading = document.createElement("h2");
+        heading.textContent = "Spelschema";
+        scheduleDiv.appendChild(heading);
+
+        // Lägg till varje match till schemat
+        schedule.forEach((match, index) => {
+          const matchDiv = document.createElement("p");
+          matchDiv.textContent = `Match ${index + 1}: ${match
+            .getPlayers()
+            .map((player) => player.getName())
+            .join(" vs ")}`;
+          scheduleDiv.appendChild(matchDiv);
+        });
       });
 
       function createSchedule() {
