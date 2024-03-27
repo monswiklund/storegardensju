@@ -55,3 +55,24 @@ function shuffleArray(array) {
   }
   return array;
 }
+
+function addPlayer() {
+  var playerName = document.getElementById("playerName").value;
+  if (playerName !== "") {
+    players.push(new Player(playerName));
+    document.getElementById("playerName").value = "";
+    renderPlayerList();
+  }
+}
+
+function renderPlayerList() {
+  var playerList = document.getElementById("playerList");
+  // Rensa listan
+  playerList.innerHTML = "";
+  // Lägg till varje spelare till listan
+  players.forEach(function (player) {
+    var li = document.createElement("li");
+    li.textContent = player.name;
+    playerList.appendChild(li);
+  });
+}
