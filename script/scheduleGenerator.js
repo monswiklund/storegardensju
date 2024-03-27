@@ -59,17 +59,6 @@ class ScheduleGenerator {
     return this.playerMatches;
   }
 
-  class ScheduleGenerator {
-  constructor(players, numMatches) {
-    this.players = players;
-    this.numMatches = numMatches;
-    this.playerMatches = new Map(players.map((player) => [player, 0]));
-  }
-
-  getPlayerMatches() {
-    return this.playerMatches;
-  }
-
   generateSchedule() {
     const schedule = [];
     const numPlayers = this.players.length;
