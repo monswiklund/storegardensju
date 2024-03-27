@@ -175,3 +175,39 @@ function createSchedule() {
   const playerMatches = scheduleGenerator.getPlayerMatches();
   renderPlayerMatches(playerMatches);
 }
+
+function generateSchedule(players, minMatches, maxMatches) {
+  const schedule = [];
+  const playerMatches = new Map(players.map((player) => [player, 0]));
+
+  while (true) {
+    const availablePlayers = shuffleArray(
+      players.filter((player) => playerMatches.get(player) < maxMatches)
+    );
+
+    if (availablePlayers.length < 4) {
+      break;
+    }
+
+    const match = new Match(availablePlayers.slice(0, 4));
+    schedule.push(match);
+
+    match.getPlayers().forEach((player) => {
+      playerMatches.set(player, playerMatches.get(player) + 1);
+    });
+  }
+
+  const underplayedPlayers = players.filter(
+    (player) => playerMatches.get(player) < minMatches
+  );
+
+  if (underplayedPlayers.length > 0) {
+    console.warn(
+      `Följande spelare spelade färre än ${minMatches} matcher: ${underplayedPlayers
+        .map((player) => player.getName())
+        .join(", ")}`
+    );
+  }
+
+  return schedule;
+}
