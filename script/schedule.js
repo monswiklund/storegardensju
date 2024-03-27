@@ -25,6 +25,9 @@ class Schedule {
       throw new Error("Antalet spelare måste vara en multipel av 4");
     }
 
+    // Blanda spelarna
+    players.sort(() => Math.random() - 0.5);
+
     for (let i = 0; i < players.length; i += 4) {
       const match = new Match(
         [players[i], players[i + 1]],

@@ -7,14 +7,20 @@
   <body>
     <button onclick="createSchedule()">Skapa spelschema</button>
 
+    <input type="text" id="playerName" placeholder="Skriv in spelarnamn" />
+    <button onclick="addPlayer()">Lägg till spelare</button>
+    <button onclick="createSchedule()">Skapa spelschema</button>
+
     <script>
+      var players = [];
+
+      function addPlayer() {
+        var playerName = document.getElementById("playerName").value;
+        players.push(new Player(playerName));
+        document.getElementById("playerName").value = "";
+      }
+
       function createSchedule() {
-        var players = [
-          new Player("Spelare 1"),
-          new Player("Spelare 2"),
-          new Player("Spelare 3"),
-          new Player("Spelare 4"),
-        ];
         var schedule = new Schedule();
         schedule.generateSchedule(players);
         // Nu kan du visa schemat på din hemsida
