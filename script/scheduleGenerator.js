@@ -43,23 +43,21 @@ class ScheduleGenerator {
     for (let i = 0; i < numMatches; i++) {
       let availablePlayers = shuffleArray([...this.players]);
 
-      // Sortera spelarna baserat på hur många matcher de har spelat
-      availablePlayers.sort(
-        (a, b) => this.playerMatches.get(a) - this.playerMatches.get(b)
-      );
+      // Skapa en kopia av spelarlistan vid varje matchgenerering
+      let remainingPlayers = [...this.players];
 
-      const player1 = availablePlayers[0];
-      const player2 = availablePlayers[1];
-      const player3 = availablePlayers[2];
-      const player4 = availablePlayers[3];
+      const team = [];
 
-      // Uppdatera antalet matcher för varje spelare
-      this.playerMatches.set(player1, this.playerMatches.get(player1) + 1);
-      this.playerMatches.set(player2, this.playerMatches.get(player2) + 1);
-      this.playerMatches.set(player3, this.playerMatches.get(player3) + 1);
-      this.playerMatches.set(player4, this.playerMatches.get(player4) + 1);
+      // Välj fyra spelare som inte redan har deltagit i någon match
+      while (team.length < 4) {
+        const player = availablePlayers.shift();
+        if (remainingPlayers.includes(player)) {
+          team.push(player);
+          remainingPlayers = remainingPlayers.filter((p) => p !== player);
+        }
+      }
 
-      const match = new Match([player1, player2, player3, player4]);
+      const match = new Match(team);
       schedule.push(match);
     }
 
