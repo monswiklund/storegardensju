@@ -137,18 +137,13 @@ function renderPlayerMatches(playerMatches) {
 }
 
 function createSchedule() {
-  const numMatchesInput = document.getElementById("numMatches");
-  const numMatches = Number(numMatchesInput.value);
-
-  const scheduleGenerator = new ScheduleGenerator(players, numMatches);
+  const scheduleGenerator = new ScheduleGenerator(
+    players,
+    Number(numMatchesInput.value)
+  );
   const schedule = scheduleGenerator.generateSchedule();
-  renderSchedule(schedule);
 
-  // Skriv ut hur många matcher varje spelare spelar
-  const playerMatches = scheduleGenerator.getPlayerMatches();
-  renderPlayerMatches(playerMatches);
-
-  // Uppdatera antalet matcher för varje spelare direkt efter att schemat har genererats
+  // Uppdatera antalet matcher för varje spelare
   players.forEach((player) => {
     const numPlayerMatches = schedule.reduce(
       (count, match) => count + (match.getPlayers().includes(player) ? 1 : 0),
@@ -157,6 +152,27 @@ function createSchedule() {
     scheduleGenerator.playerMatches.set(player, numPlayerMatches);
   });
 
-  // Skriv ut uppdaterade antalet matcher för varje spelare
-  renderPlayerMatches(scheduleGenerator.getPlayerMatches());
+  const scheduleDiv = document.getElementById("schedule");
+
+  // Rensa schemat
+  scheduleDiv.innerHTML = "";
+
+  // Lägg till en rubrik
+  const heading = document.createElement("h2");
+  heading.textContent = "Spelschema";
+  scheduleDiv.appendChild(heading);
+
+  // Lägg till varje match till schemat
+  schedule.forEach((match, index) => {
+    const matchDiv = document.createElement("p");
+    matchDiv.textContent = `Match ${index + 1}: ${match
+      .getPlayers()
+      .map((player) => player.getName())
+      .join(" vs ")}`;
+    scheduleDiv.appendChild(matchDiv);
+  });
+
+  // Uppdatera antalet matcher för varje spelare
+  const playerMatches = scheduleGenerator.getPlayerMatches();
+  renderPlayerMatches(playerMatches);
 }
