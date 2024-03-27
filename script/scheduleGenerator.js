@@ -1,5 +1,8 @@
 class Match {
   constructor(players) {
+    if (new Set(players).size !== players.length) {
+      throw new Error("En spelare kan inte möta sig själv i en match.");
+    }
     this.players = players;
   }
 
