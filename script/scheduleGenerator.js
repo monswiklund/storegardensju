@@ -99,7 +99,7 @@ function renderSchedule(schedule) {
   });
 }
 function createSchedule() {
-  var schedule = new Schedule();
-  schedule.generateSchedule(players);
-  renderSchedule(schedule.matches);
+  var scheduleGenerator = new ScheduleGenerator(players);
+  var schedule = scheduleGenerator.generateSchedule();
+  renderSchedule(schedule);
 }
