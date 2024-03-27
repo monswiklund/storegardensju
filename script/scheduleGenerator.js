@@ -25,7 +25,7 @@ class ScheduleGenerator {
 
   generateSchedule() {
     const schedule = [];
-    const availablePlayers = [...this.players];
+    let availablePlayers = [...this.players];
 
     // Kontrollera att det finns minst 4 spelare för att bilda ett lag
     if (availablePlayers.length < 4) {
@@ -45,11 +45,6 @@ class ScheduleGenerator {
 
       const match = new Match([player1, player2, player3, player4]);
       schedule.push(match);
-
-      availablePlayers.push(player1);
-      availablePlayers.push(player2);
-      availablePlayers.push(player3);
-      availablePlayers.push(player4);
     }
 
     return schedule;
